@@ -30,3 +30,11 @@ end
 
 gem 'devise'
 gem 'omniauth-facebook'
+
+# hides our secret keys
+gem 'dotenv-rails', groups: [:development, :test]
+
+# hosts our images
+gem 'cloudinary', '~> 1.9.1'
+
+gem 'carrierwave', '~> 1.2'
