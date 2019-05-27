@@ -1,2 +1,0 @@
-class ToiletsController < ApplicationController
-end
