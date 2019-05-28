@@ -5,14 +5,14 @@
   <% @toilets.each do |toilet| %>
     <ul>
       <div class="card-trip">
-        <img src="https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450">
+        <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
         <div class="card-trip-infos">
           <div>
-            <h2><%= toilet.name %></h2>
+            <h2><%= link_to toilet.name, toilet_path(toilet) %></h2>
             <p><%= toilet.description %></p>
           </div>
           <h2 class="card-trip-pricing">$<%= toilet.rate %> / min</h2>
-          <img src='https://kitt.lewagon.com/placeholder/users/krokrob' class="card-trip-user avatar-bordered"/>
+          <%= link_to image_tag("https://kitt.lewagon.com/placeholder/users/krokrob", alt: "alttext", class: "card-trip-user avatar-bordered"), "#" %>
         </div>
       </div>
     </ul>
