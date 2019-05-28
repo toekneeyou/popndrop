@@ -1,5 +1,6 @@
 <div id='booking-form'>
-  <p class='text-center'>
-    This is a book form
-  </p>
+  <%= simple_form_for [@toilet, @booking] %>
+  <%= f.input :check_in %>
+  <%= f.input :check_out %>
+  <%= f.submit %>
 </div>
