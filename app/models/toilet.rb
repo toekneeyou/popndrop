@@ -9,5 +9,6 @@ class Toilet < ApplicationRecord
 
   has_many :bookings, dependent: :destroy
   has_many :reviews, through: :bookings
+  has_many :reviews, as: :reviewable
   # has_attachment :photo
 end

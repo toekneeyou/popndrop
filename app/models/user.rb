@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :bookings
   has_many :reviews, through: :bookings
+  has_many :reviews, as: :reviewable
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
