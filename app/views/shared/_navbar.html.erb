@@ -19,6 +19,7 @@
         <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <% if user_signed_in? %>
+          <!-- Not working yet but will modify later -Tyler -->
           <%= link_to "Account", poopspace_user_path(current_user), class: "dropdown-item" %>
           <% end %>
           <%= link_to "Log out", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
