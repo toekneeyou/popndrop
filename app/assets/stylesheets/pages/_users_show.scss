@@ -1,0 +1,13 @@
+.profile-container {
+  border: 1px solid lightgray;
+  background-color: white;
+  width: 350px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-picture {
+  height: 190px;
+}
