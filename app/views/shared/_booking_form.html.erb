@@ -1,5 +1,15 @@
 <div id='booking-form'>
-  <p class='text-center'>
-    This is a book form
-  </p>
+  <span>
+    <span style="font-size:24px; font-weight:bold;" >
+      $<%= @toilet.rate %>
+    </span>
+    <span style="font-size:12px;">
+      per minute
+    </span>
+  </span>
+  <%= simple_form_for [@toilet, @booking] do |f| %>
+  <%= f.input :check_in %>
+  <%= f.input :check_out %>
+  <%= f.button :submit, 'Book this toilet', class: 'btn btn-primary'%>
+  <% end %>
 </div>

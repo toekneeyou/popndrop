@@ -7,6 +7,7 @@ class BookingsController < ApplicationController
   def show
     set_booking
     @toilet = @booking.toilet
+    @user = User.find(@toilet.user_id)
   end
 
   def new
@@ -18,7 +19,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.toilet = @toilet
     @booking.user = current_user
-    @booking.price = @booking.toilet_id.rate * (@booking.check_out - @booking.check_in)
+    @booking.price = @booking.toilet.rate * (@booking.check_out - @booking.check_in)
     if @booking.save
       redirect_to booking_path(@booking)
     else
@@ -41,7 +42,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:check_in, check_out)
+    params.require(:booking).permit(:check_in, :check_out)
   end
 
   def set_booking

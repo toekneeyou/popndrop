@@ -9,14 +9,15 @@ Rails.application.routes.draw do
   end
 
   resources :toilets do
-    resources :bookings, only: [:create]
+    resources :bookings, only: [:new, :create]
   end
 
   resources :bookings, only: [:index, :show, :destroy, :update] do
-      resources :reviews, only: [:create, :index, :show]
+      resources :reviews, only: [:new, :create]
   end
 
-  namespace :my do
+  namespace :poopspace, only: [:show, :update, :destroy] do
+    resources :users, only: [:show, :update, :destroy]
     resources :toilets, only: [:index]
     resources :bookings, only: [:index, :update]
   end
