@@ -1,6 +1,6 @@
 class ToiletsController < ApplicationController
   # skip_before_action :authenticate_user!, only: [:new, :index]
-  before_action :set_toilet, only: [:show, :new, :create, :edit, :update, :destroy]
+  before_action :set_toilet, only: [:show, :new, :edit, :update, :destroy]
 
   def index
     @toilets = Toilet.all
