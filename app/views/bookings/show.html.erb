@@ -1,0 +1,40 @@
+<div class='booking-container d-flex justify-content-between'>
+  <!-- contains booking-card and booking-map -->
+  <div class='booking-card'>
+    <h1 class='booking-padding'>
+      <%= @toilet.name %>
+    </h1>
+    <img src="http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg">
+
+    <div class='booking-time border-bottom d-flex justify-content-between booking-padding'>
+      <div class='booking-checkin'>
+        <h3>Check-In</h3>
+        <p><%= @booking.check_in %></p>
+      </div>
+      <div class='booking-checkout'>
+        <h3>Check-out</h3>
+        <p><%= @booking.check_out %></p>
+      </div>
+    </div>
+
+    <div class='booking-host border-bottom d-flex justify-content-between booking-padding'>
+      <div class='booking-toilet'>
+        <h3><%= @toilet.name %></h3>
+        <p>Hosted by <%= @user.first_name %></p>
+      </div>
+      <h3>avatar</h3>
+    </div>
+
+    <div class='booking-address border-bottom booking-padding'>
+      <h3>Address</h3>
+      <p><%= @toilet.address %></p>
+    </div>
+
+    <div class='booking-cost border-bottom booking-padding'>
+      <h3>Total cost</h3>
+      <p>$1,000,000</p>
+    </div>
+  </div>
+  <div class='booking-map'>
+  </div>
+</div>
