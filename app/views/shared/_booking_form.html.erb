@@ -1,6 +1,7 @@
 <div id='booking-form'>
-  <%= simple_form_for [@toilet, @booking] %>
+  <%= simple_form_for [@toilet, @booking] do |f| %>
   <%= f.input :check_in %>
   <%= f.input :check_out %>
   <%= f.submit %>
+  <% end %>
 </div>
