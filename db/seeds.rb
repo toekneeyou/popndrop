@@ -11,6 +11,8 @@
   toilet.name = "Amazing porcelain throne"
   toilet.description = "AMAZING toilet for the heaviest loads"
   toilet.rate = 5
+  toilet.user = 2
+  toilet.address = "123 Shitty Street"
   toilet.save
 end
 
