@@ -1,29 +1,33 @@
-<h2>Sign up</h2>
+<div class="banner" style="background-image:url(https://image.redbull.com/rbcom/010/2015-05-07/1331721593940_2/0010/1/2050/1367/1/a-remote-outhouse-in-the-cascade-mountains-in-washington-state-usa.jpg);">
+  <div class="mx-auto p-3 mb-2 bg-light text-dark rounded-lg" style="width: 300px;">
+    <h2 class="mx-auto" style="width: 200px;">Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :first_name, required: true %>
-    <%= f.input :last_name, required: true %>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
+      <div class="form-inputs mx-auto" style="width: 200px;">
+        <%= f.input :first_name, required: true %>
+        <%= f.input :last_name, required: true %>
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" }%>
+        <%= f.input :password,
+                    required: true,
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    required: true,
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
+
+        <button type="button" class="btn btn-primary form-actions">
+          <%= f.button :submit, "Sign up" %>
+        </button>
+      <br>
+      <%= render "devise/shared/links" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
