@@ -1,5 +1,8 @@
-
-<h1>Awesome! Book "<%= @toilet.name %>" now! </h1>
+<div class="banner-show">
+  <div>
+    <h1>Awesome! Book "<%= @toilet.name %>" now! </h1>
+  </div>
+</div>
 
 <div class="card-trip">
   <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(@toilet)  %>

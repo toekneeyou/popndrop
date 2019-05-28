@@ -1,9 +1,4 @@
-// Import page-specific CSS files here.
-@import "home";
-@import "show";
-@import "poopspace";
-
-.banner-index {
+.banner-poopspace {
   margin: 0;
   color: #575757;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
@@ -13,7 +8,7 @@
 }
 
 
-.banner-index h1 {
+.banner-poopspace h1 {
   margin: 0;
   color: #575757;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
@@ -21,7 +16,7 @@
   font-weight: bold;
 }
 
-.banner-index h2 {
+.banner-poopspace h2 {
   font-size: 20px;
   color: #4a4a4a;
   opacity: .7;

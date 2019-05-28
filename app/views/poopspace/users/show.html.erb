@@ -1,28 +1,49 @@
-<h1>Welcome <%= current_user.email %></h1>
+<br>
+<br>
+<div class="banner-poopspace">
+  <div>
+    <h1>Welcome <%= current_user.email %></h1>
+    <h2>Your Poopspace is where you can manage all of your bodily needs!</h2>
+  </div>
+</div>
 
-<h1>Here are your toilets!</h1>
 
-<ol class="d-flex">
-  <% @toilets.each do |toilet| %>
-    <ul>
-      <div class="card-trip">
-        <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
-        <div class="card-trip-infos">
-          <div>
-            <h2><%= link_to toilet.name, toilet_path(toilet) %></h2>
-            <p><%= toilet.description %></p>
+<div class="banner-poopspace">
+  <div>
+    <h1>Here are your toilets!</h1>
+  </div>
+  <br>
+  <ol class="d-flex">
+    <% @toilets.each do |toilet| %>
+      <ul>
+        <div class="card-trip">
+          <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= link_to toilet.name, toilet_path(toilet) %></h2>
+              <p><%= toilet.description %></p>
+            </div>
+            <h2 class="card-trip-pricing">$<%= toilet.rate %> / min</h2>
+            <%= link_to image_tag("https://kitt.lewagon.com/placeholder/users/ssaunier", alt: "alttext", class: "card-trip-user avatar-bordered"), "#" %>
           </div>
-          <h2 class="card-trip-pricing">$<%= toilet.rate %> / min</h2>
-          <%= link_to image_tag("https://kitt.lewagon.com/placeholder/users/ssaunier", alt: "alttext", class: "card-trip-user avatar-bordered"), "#" %>
         </div>
-      </div>
-    </ul>
-  <% end %>
-</ol>
+      </ul>
+    <% end %>
+  </ol>
+</div>
 
 <%= render '/shared/toilet_form' %>
 
-<h1>Here are your bookings!</h1>
-<% @bookings.each do |booking| %>
-  <h1><%= booking%></h1>
-<% end %>
+<div class="banner-poopspace">
+  <div>
+    <h1>Here are your bookings!</h1>
+  </div>
+  <br>
+  <ol>
+  <% @bookings.each do |booking| %>
+    <ul>
+      <h2><%= booking%></h2>
+    </ul>
+  <% end %>
+  </ol>
+</div>
