@@ -1,1 +1,7 @@
 as the owner of the booking, i can decline bookings, check in users? and review them after here. what else?
+
+<%= simple_form_for [@booking, @review, @booker] do |f| %>
+<%= f.input :rating, inclusion: { in: (0..5).to_a } %>
+<%= f.input :content %>
+<%= f.submit %>
+<% end %>
