@@ -1,13 +1,15 @@
 class ToiletsController < ApplicationController
   # skip_before_action :authenticate_user!, only: [:new, :index]
-  # before_action :set_toilet, only: [:index, :show, :new, :create]
+  before_action :set_toilet, only: [:show, :new, :create, :edit, :update, :destroy]
 
   def index
     @toilets = Toilet.all
   end
 
   def show
-    @toilet = Toilet.find(params[:id])
+    @booking = Booking.new
+    # @average_rating = average_rating(@toilet)
+    # hiding for now since we don't have reviews yet
   end
 
   def new
@@ -16,7 +18,6 @@ class ToiletsController < ApplicationController
   end
 
   def edit
-    set_toilet
   end
 
   def create
@@ -31,13 +32,11 @@ class ToiletsController < ApplicationController
   end
 
   def update
-    set_toilet
     @toilet.update(toilet_params)
     redirect_to toilet_path(@toilet)
   end
 
   def destroy
-    set_toilet
     @toilet.destroy
     redirect_to root_path
   end
@@ -50,5 +49,14 @@ class ToiletsController < ApplicationController
 
   def set_toilet
     @toilet = Toilet.find(params[:id])
+  end
+
+  def average_rating(toilet)
+    total = 0
+    toilet.reviews.each do |review|
+      total += review.rating
+    end
+    average = (total / toilet.reviews.length)
+    return average
   end
 end
