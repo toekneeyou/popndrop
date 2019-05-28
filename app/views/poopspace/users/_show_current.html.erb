@@ -39,14 +39,16 @@
   <ul>
     <% @bookings.each do |booking| %>
       <li>
-        <div class='booking-card-sm d-flex flex-column align-items-start'>
-          <img src="http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg">
-          <h2><%= booking.toilet.name %></h2>
-          <div class='booking-card-sm-details'>
-            <p><%= booking.toilet.address %></p>
-            <p><%= booking.check_in %></p>
+        <a href="<%= booking_path(booking.id) %>">
+          <div class='booking-card-sm d-flex flex-column align-items-start'>
+            <img src="http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg">
+            <h2><%= booking.toilet.name %></h2>
+            <div class='booking-card-sm-details'>
+              <p><%= booking.toilet.address %></p>
+              <p><%= booking.check_in %></p>
+            </div>
           </div>
-        </div>
+        </a>
       </li>
     <% end %>
   </ul>
