@@ -1,3 +1,28 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "show";
+
+.banner-index {
+  margin: 0;
+  color: #575757;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 44px;
+  padding: 25px 25px 0px 50px;
+  font-weight: bold;
+}
+
+
+.banner-index h1 {
+  margin: 0;
+  color: #575757;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 44px;
+  font-weight: bold;
+}
+
+.banner-index h2 {
+  font-size: 20px;
+  color: #4a4a4a;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
