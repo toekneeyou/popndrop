@@ -8,6 +8,8 @@ class ToiletsController < ApplicationController
 
   def show
     @booking = Booking.new
+    # @average_rating = average_rating(@toilet)
+    # hiding for now since we don't have reviews yet
   end
 
   def new
@@ -47,5 +49,14 @@ class ToiletsController < ApplicationController
 
   def set_toilet
     @toilet = Toilet.find(params[:id])
+  end
+
+  def average_rating(toilet)
+    total = 0
+    toilet.reviews.each do |review|
+      total += review.rating
+    end
+    average = (total / toilet.reviews.length)
+    return average
   end
 end
