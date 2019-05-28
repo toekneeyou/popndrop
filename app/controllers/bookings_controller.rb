@@ -7,6 +7,7 @@ class BookingsController < ApplicationController
   def show
     set_booking
     @toilet = @booking.toilet
+    @user = User.find(@toilet.user_id)
   end
 
   def new
