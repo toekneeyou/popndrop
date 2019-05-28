@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   namespace :poopspace, only: [:show, :update, :destroy] do
+    resources :users, only: [:show, :update, :destroy]
     resources :toilets, only: [:index]
     resources :bookings, only: [:index, :update]
   end
