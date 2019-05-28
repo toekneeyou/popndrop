@@ -6,8 +6,8 @@ class CreateBookings < ActiveRecord::Migration[5.2]
       t.integer :price
       t.references :toilet, foreign_key: true
       t.references :user, foreign_key: true
-      t.boolean :user_reviewed
-      t.boolean :host_reviewed
+      t.boolean :user_reviewed, default: false
+      t.boolean :host_reviewed, default: false
 
       t.timestamps
     end

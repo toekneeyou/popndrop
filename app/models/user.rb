@@ -1,6 +1,14 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :email, presence: true, uniquness: true
+  validates :encrypted_password, presence: true
+
+  has_many :bookings
+  has_many :reviews, through: :bookings
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
@@ -23,7 +31,6 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0, 20] # Fake password for validation
       user.save
     end
-
     return user
   end
 end
