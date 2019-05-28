@@ -1,4 +1,9 @@
 .profile-container {
+  display: flex;
+  justify-content: center;
+}
+
+.profile-card {
   border: 1px solid lightgray;
   background-color: white;
   width: 350px;
@@ -6,8 +11,23 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  p {
+    margin: 0;
+  }
 }
 
 .profile-picture {
   height: 190px;
+  text-align: center;
+  padding: 10px;
+}
+
+.profile-description-card {
+  div {
+    padding: 20px;
+  }
+}
+
+.card-padding {
+  padding: 20px;
 }
