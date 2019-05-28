@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :email, presence: true, uniquness: true
+  validates :email, presence: true, uniqueness: true
   validates :encrypted_password, presence: true
 
   has_many :bookings
