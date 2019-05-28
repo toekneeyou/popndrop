@@ -1,23 +1,13 @@
 <div class="banner" style="background-image:url(https://www.besttoiletguide.net/file/2015/12/Best-Toilet.jpg);">
-  <div class="container">
-    <h1>Pop N' Drop <strong>connects you</strong> to <strong>the world's best toilets</strong>!</h1>
-    <p>Change your life and relax on the throne</p>
+  <div>
+    <h1>Pop N' Drop connects you to the world's best toilets!</h1>
+    <h2>Change your life and relax on the throne</p>
+    <%= link_to "See all toilets", toilets_path %>
   </div>
+  <%= render 'shared/search_form' %>
 </div>
 
-<div class="footer">
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-  </div>
-  <div class="footer-copyright">
-    This footer is made with <i class="fas fa-heart"></i> at Le Wagon
-  </div>
-  
-<%= render 'shared/search_form' %>
-  
 <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+
+<%= render 'shared/footer' %>
 </div>

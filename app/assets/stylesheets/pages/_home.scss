@@ -15,20 +15,20 @@
 .banner {
   background-size: cover;
   background-position: center;
-  padding: 285px 75px;
+  padding: 125px 75px 285px 75px;
 }
 
 .banner h1 {
   margin: 0;
-  color: white;
+  color: #575757;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 32px;
+  font-size: 44px;
   font-weight: bold;
 }
 
-.banner p {
+.banner h2 {
   font-size: 20px;
-  color: white;
+  color: #4a4a4a;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
