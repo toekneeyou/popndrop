@@ -19,12 +19,5 @@ Rails.application.routes.draw do
     resources :toilets, only: [:index]
     resources :bookings, only: [:index, :update]
   end
-
-  get '/poopspace/users/:id', to: 'poopspace#:id'
-  get '/poopspace/toilets', to: 'poopspace/users#index'
-  get '/poopspace/bookings', to: 'poopspace/users#index'
-  patch '/poopspace/bookings/:id', to: 'poopspace/users#update'
-  put '/poopspace/bookings/:id', to: 'poopspace/users#update'
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
