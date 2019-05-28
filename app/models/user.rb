@@ -11,5 +11,5 @@ class User < ApplicationRecord
   validates :encrypted_password, presence: true
 
   has_many :bookings
-  has_many :reviews, throug: :bookings
+  has_many :reviews, through: :bookings
 end
