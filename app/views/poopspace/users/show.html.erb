@@ -7,7 +7,6 @@
   </div>
 </div>
 
-<body>
   <div class="banner-poopspace">
     <div>
       <h1>Here are your toilets!</h1>
@@ -34,17 +33,24 @@
 
   <%= render '/shared/toilet_form' %>
 
-  <div class="banner-poopspace">
-    <div>
-      <h1>Here are your bookings!</h1>
-    </div>
-    <br>
-    <ol>
-    <% @bookings.each do |booking| %>
-      <ul>
-        <h2><%= booking%></h2>
-      </ul>
-    <% end %>
-    </ol>
+<div class='booking-card-container'>
+  <div>
+    <h1>Here are your bookings!</h1>
   </div>
-</body>
+  <br>
+  <ul>
+    <% @bookings.each do |booking| %>
+      <li>
+        <div class='booking-card-sm d-flex flex-column align-items-start'>
+          <img src="http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg">
+          <h2><%= booking.toilet.name %></h2>
+          <div class='booking-card-sm-details'>
+            <p><%= booking.toilet.address %></p>
+            <p><%= booking.check_in %></p>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
