@@ -1,1 +1,18 @@
 <p>all toilets</p>
+
+
+<ol class="d-flex">
+  <% @toilets.each do |toilet| %>
+    <div class="card-trip">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg">
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= toilet.name %></h2>
+          <p><%= toilet.description %></p>
+        </div>
+        <h2 class="card-trip-pricing"><%= toilet.rate %></h2>
+        <img src='https://kitt.lewagon.com/placeholder/users/krokrob' class="card-trip-user avatar-bordered"/>
+      </div>
+    </div>
+  <% end %>
+</ol>
