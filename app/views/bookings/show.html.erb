@@ -1,30 +1,34 @@
-<div class='booking-container'>
+<div class='booking-container d-flex justify-content-between'>
   <!-- contains booking-card and booking-map -->
   <div class='booking-card'>
-    <h2>@booking.toilet.address</h2>
-    <h1 class='border-bottom'>@booking.toilet.name</h1>
-    <div class='check-in-out border-bottom'>
-      <div class='check-in'>
+    <h1 class='border-bottom booking-padding border-bottom'>@booking.toilet.name</h1>
+    <p> image goes here, spans entire card</p>
+
+    <div class='booking-time border-bottom d-flex justify-content-between booking-padding'>
+      <div class='booking-checkin'>
         <h3>Check-In</h3>
         <p><%= @booking.check_in %></p>
       </div>
-      <div class='check-out'>
+      <div class='booking-checkout'>
         <h3>Check-out</h3>
         <p><%= @booking.check_out %></p>
       </div>
     </div>
-    <div class='host-info border-bottom'>
-      <div class='toilet-info'>
+
+    <div class='booking-host border-bottom d-flex justify-content-between booking-padding'>
+      <div class='booking-toilet'>
         <h3><%= @booking.toilet.name %></h3>
         <p>Hosted by @booking.toilet.user_id</p>
       </div>
       <h3>avatar</h3>
     </div>
-    <div class='toilet-address border-bottom'>
+
+    <div class='booking-address border-bottom booking-padding'>
       <h3>Address</h3>
       <p>@booking.toilet.address</p>
     </div>
-    <div class='booking-cost border-bottom'>
+
+    <div class='booking-cost border-bottom booking-padding'>
       <h3>Total cost</h3>
       <p>$1,000,000</p>
     </div>
