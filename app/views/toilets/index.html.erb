@@ -5,11 +5,11 @@
   </div>
 </div>
 
-<div class="d-flex">
-  <ul>
+<div>
+  <ul class="d-flex" style='list-style:none;'>
     <% @toilets.each do |toilet| %>
       <li>
-        <div class="card-trip">
+        <div class="card-trip m-3">
           <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
           <div class="card-trip-infos">
             <div>
