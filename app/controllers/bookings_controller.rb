@@ -9,7 +9,7 @@ class BookingsController < ApplicationController
   def show
     @toilet = @booking.toilet
     @user = User.find(@toilet.user_id)
-    @booker = User.find(@booking.user_id)
+    @guest = User.find(@booking.user_id)
     @review = Review.new
     @markers = [{
       lat: @toilet.latitude,
