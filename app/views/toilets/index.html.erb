@@ -20,9 +20,9 @@
             </div>
             <h2 class="card-trip-pricing">$<%= toilet.rate %> / min</h2>
             <% if toilet.user.photo.file.nil? %>
-              <%= link_to image_tag("paper.png", alt: "alttext", class: "card-trip-user avatar-bordered"), "#" %>
+              <%= link_to image_tag("paper.png", alt: "avatar", class: "card-trip-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
             <% else %>
-              <%= link_to image_tag(toilet.user.photo, alt: "alttext", class: "card-trip-user avatar-bordered"), "#" %>
+              <%= link_to image_tag(toilet.user.photo, alt: "avatar", class: "card-trip-user avatar-bordered"), poopspace_user_path(toilet.user_id %>
             <% end %>
           </div>
         </div>
