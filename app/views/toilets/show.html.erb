@@ -1,7 +1,7 @@
-<% if current_user.id == @toilet.user_id%>
-  <%= render 'show_host' %>
+<% if current_user == nil || current_user.id != @toilet.user_id%>
   <!-- display toilet with ability to edit toilet, what else? -->
-<% else %>
   <%= render 'show_guest' %>
+<% else %>
+  <%= render 'show_host' %>
   <!-- display toilet, what else?-->
 <% end %>
