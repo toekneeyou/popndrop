@@ -22,7 +22,7 @@
         <%= f.input :photo %>
         <%= f.input :photo_cache, as: :hidden %>
       <br>
-        <button type="button" class="btn btn-primary form-actions mx-auto" style="width: 200px;"><%= f.button :submit, "Sign up" %></button>
+        <%= f.button :submit, 'Sign up', class:'btn btn-primary form-actions mx-auto', style:'width:200px;' %>
       <br>
       <button type="button" class="btn btn-link"><%= render "devise/shared/links" %></button>
       </div>
