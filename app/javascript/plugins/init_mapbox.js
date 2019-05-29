@@ -35,7 +35,7 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/tylermcwilliam/cjw8qt1zq148k1dqmk00pipdp' // <-- use your own!
+      style: 'mapbox://styles/tylermcwilliam/cjw8rcrwg14np1cl6wm6pzumk' // <-- use your own!
     });
     const markers = JSON.parse(mapElement.dataset.markers);
     addMarkersToMap(map, markers);
