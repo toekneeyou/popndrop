@@ -1,10 +1,51 @@
 <div class="banner" style="background-image:url(https://image.redbull.com/rbcom/010/2015-05-07/1331721593940_2/0010/1/2050/1367/1/a-remote-outhouse-in-the-cascade-mountains-in-washington-state-usa.jpg);">
   <div>
-    <h1>Pop N' Drop connects you to the world's best toilets!</h1>
-    <h2>Change your life and relax on the throne</p>
-    <%= link_to "See all toilets", toilets_path %>
+    <h1 class="text-white rounded text-center">Pop N' Drop connects you to the world's best toilets!</h1>
+    <h2 class="text-white rounded text-center">Search for your first toilet today!</p>
+    <div class="form-group has-search">
+      <span class="fa fa-search form-control-feedback"></span>
+      <input type="text" class="form-control" placeholder="Search">
+    </div>
+    <div class="text-white rounded d-flex justify-content-center">
+      <%= link_to "See all toilets", toilets_path, class: 'btn btn-primary' %>
+    </div>
   </div>
-  <%= render 'shared/search_form' %>
 </div>
 
+<div class="container">
+  <br>
+  <h2 class="text-center">How it works</h2>
+  <br>
+  <div class="cards row d-flex justify-content-around">
+    <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+        <%= image_tag ("sign-up.jpg"), class:'card-img-top' %>
+      <div class="card-body">
+        <h4>Sign up.</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+    <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+      <%= image_tag ("find.jpg"), class:'card-img-top' %>
+      <div class="card-body">
+        <h4>Find toilets.</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+    <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem;">
+      <%= image_tag ("drop.jpg"), class:'card-img-top' %>
+      <div class="card-body">
+        <h4>Let it drop.</h4>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+  </div>
+  <div class="card border-dark shadow p-3 mb-3" style="max-width: 100rem;">
+    <div class="card-header text-center">About Us</div>
+      <div class="card-body text-dark">
+        <p class="card-text text-center">Our passion for toilets stems from a long history of studying bodily fluid disposal. We pride ourselves on the research and data we have collected on what it takes to find the greatest toilets. We hope that our application brings clarity to those that are in need of a private, secure, and comfortable place to let off a load.</p>
+      </div>
+  </div>
 </div>
+
+
+
