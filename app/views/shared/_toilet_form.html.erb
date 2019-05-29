@@ -3,11 +3,13 @@
     <span style="font-size:24px; font-weight:bold;" >
       <h3>List a New Toilet</h3>
     </span>
-  <%= simple_form_for [@toilet] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :address %>
-  <%= f.input :rate %>
-  <%= f.button :submit, 'List this toilet', class: 'btn btn-primary'%>
-  <% end %>
+    <p>
+    <%= simple_form_for [@toilet] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :address %>
+    <%= f.input :rate %>
+    <%= f.button :submit, 'List this toilet', class: 'btn btn-primary'%>
+    <% end %>
+  </p>
 </div>
