@@ -38,3 +38,20 @@
   <div class='booking-map'>
   </div>
 </div>
+
+<div class='guest-card'>
+  <div>
+    <h1 class='booking-padding border-bottom'>Who's coming?</h1>
+    <div class='booking-padding border-bottom d-flex justify-content-center'>
+      <% if @guest.photo.file.nil? %>
+        <%= image_tag ('paper.png'), class:"avatar-huge" %>
+      <% else %>
+        <%= cl_image_tag @guest.photo, class:"avatar-huge" %>
+      <% end %>
+    </div>
+    <div class='booking-padding border-bottom'>
+      <p><%= @guest.first_name %> <%= @guest.last_name %></p>
+      <p >Bali</p>
+    </div>
+  </div>
+</div>
