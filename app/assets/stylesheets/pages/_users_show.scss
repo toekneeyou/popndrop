@@ -1,0 +1,44 @@
+.profile-container {
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-card {
+  border: 1px solid lightgray;
+  background-color: white;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin-right: 40px;
+  p {
+    margin: 0;
+  }
+}
+
+.profile-picture {
+  height: 190px;
+  text-align: center;
+  padding: 10px;
+}
+
+.card-padding {
+  padding: 20px;
+}
+
+.profile-description-card {
+  width: 600px;
+  margin-left: 40px;
+  p {
+    font-size: 16px;
+  }
+  h2 {
+    font-size: 40px;
+    margin-bottom: 30px;
+  }
+}
+
+.user-listings {
+  margin-top: 50px;
+}

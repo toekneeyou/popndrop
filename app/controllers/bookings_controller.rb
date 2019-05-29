@@ -1,13 +1,16 @@
 class BookingsController < ApplicationController
+  before_action :set_booking, only: [:show, :edit, :update, :destroy]
+
   def index
     @bookings = Booking.where(user_id: current_user.id)
     @review = Review.new
   end
 
   def show
-    set_booking
     @toilet = @booking.toilet
     @user = User.find(@toilet.user_id)
+    @booker = User.find(@booking.user_id)
+    @review = Review.new
   end
 
   def new
@@ -27,14 +30,15 @@ class BookingsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
-    set_booking
     @booking.save!
     redirect_to booking_path(@booking)
   end
 
   def destroy
-    set_booking
     @booking.destroy
     redirect_to root_path
   end
