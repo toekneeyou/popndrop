@@ -20,7 +20,7 @@
             <% if toilet.user.photo.file.nil? %>
               <%= link_to image_tag("paper.png", alt: "avatar", class: "card-trip-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
             <% else %>
-              <%= link_to image_tag(toilet.user.photo, alt: "avatar", class: "card-trip-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
+              <%= link_to cl_image_tag(toilet.user.photo, alt: "avatar", class: "card-trip-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
             <% end %>
           </div>
         </div>
