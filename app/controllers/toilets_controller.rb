@@ -3,13 +3,28 @@ class ToiletsController < ApplicationController
   before_action :set_toilet, only: [:show, :new, :edit, :update, :destroy]
 
   def index
-    @toilets = Toilet.all
+    @toilets = Toilet.where.not(latitude: nil, longitude: nil)
+
+    @markers = @toilets.map do |toilet|
+      {
+        lat: toilet.latitude,
+        lng: toilet.longitude,
+        infoWindow: render_to_string(partial: "infowindow", locals: { toilet: toilet }),
+        image_url: helpers.asset_url('dancing-paper.gif')
+      }
+    end
   end
 
   def show
     @booking = Booking.new
     # @average_rating = average_rating(@toilet)
     # hiding for now since we don't have reviews yet
+    @markers = [{
+      lat: @toilet.latitude,
+      lng: @toilet.longitude,
+      infoWindow: render_to_string(partial: "infowindow", locals: { toilet: @toilet }),
+      image_url: helpers.asset_url('dancing-paper.gif')
+    }]
   end
 
   def new

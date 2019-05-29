@@ -11,6 +11,12 @@ class BookingsController < ApplicationController
     @user = User.find(@toilet.user_id)
     @booker = User.find(@booking.user_id)
     @review = Review.new
+    @markers = [{
+      lat: @toilet.latitude,
+      lng: @toilet.longitude,
+      infoWindow: render_to_string(partial: "infowindow", locals: { toilet: @toilet }),
+      image_url: helpers.asset_url('dancing-paper.gif')
+    }]
   end
 
   def new
