@@ -1,4 +1,4 @@
-<% if current_user.id == @booking.user_id%>
+<% if current_user.id == @booking.toilet.user_id%>
   <%= render 'show_current' %>
   <!-- display booking with ability to decline, review user, what else? -->
 <% else %>

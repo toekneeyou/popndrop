@@ -4,6 +4,14 @@
   </div>
 </div>
 
+<div
+id="map"
+style="width: 100%;
+height: 600px;"
+data-markers="<%= @markers.to_json %>"
+data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+></div>
+
 <div class="card-trip">
   <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(@toilet)  %>
   <div class="card-trip-infos">
