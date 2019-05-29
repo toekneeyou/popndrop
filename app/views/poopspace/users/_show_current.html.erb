@@ -1,16 +1,21 @@
 <div class="banner-poopspace">
   <div>
-    <h1>Welcome <%= current_user.email %></h1>
+    <h1>Welcome <%= current_user.first_name %></h1>
     <h2>Your Poopspace is where you can manage all of your bodily needs!</h2>
   </div>
 </div>
 
-  <div class="banner-poopspace">
-    <div>
-      <h1>Here are your toilets!</h1>
-    </div>
+<div class="container">
+    <header>
+      <div class="listings">
+        <h1>Here are your Listings!</h1>
+      </div>
+      <div class="bookings">
+        <h1>Here are your Bookings!</h1>
+      </div>
+    </header>
     <br>
-    <ol class="d-flex">
+    <ol class="listings-box">
       <% @toilets.each do |toilet| %>
         <ul>
           <div class="card-trip">
@@ -27,30 +32,30 @@
         </ul>
       <% end %>
     </ol>
-  </div>
 
-  <%= render '/shared/toilet_form' %>
-
-<div class='booking-card-container'>
-  <div>
-    <h1>Here are your bookings!</h1>
-  </div>
-  <br>
-  <ul>
-    <% @bookings.each do |booking| %>
-      <li>
-        <a href="<%= booking_path(booking.id) %>">
-          <div class='booking-card-sm d-flex flex-column align-items-start'>
-            <img src="http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg">
-            <h2><%= booking.toilet.name %></h2>
-            <div class='booking-card-sm-details'>
-              <p><%= booking.toilet.address %></p>
-              <p><%= booking.check_in %></p>
-            </div>
-          </div>
-        </a>
-      </li>
-    <% end %>
-  </ul>
+    <div class='booking-card-container'>
+      
+      <br>
+      <ul>
+        <% @bookings.each do |booking| %>
+          <li>
+            <a href="<%= booking_path(booking.id) %>">
+              <div class='booking-card-sm d-flex flex-column align-items-start'>
+                <img src="http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg">
+                <h2><%= booking.toilet.name %></h2>
+                <div class='booking-card-sm-details'>
+                  <p><%= booking.toilet.address %></p>
+                  <p><%= booking.check_in %></p>
+                </div>
+              </div>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
 </div>
 
+
+<div class="">
+  <%= render '/shared/toilet_form' %>
+</div>
