@@ -19,7 +19,11 @@
             <p><%= toilet.description %></p>
           </div>
           <h2 class="card-trip-pricing">$<%= toilet.rate %> / min</h2>
-          <%= link_to image_tag("https://kitt.lewagon.com/placeholder/users/krokrob", alt: "alttext", class: "card-trip-user avatar-bordered"), "#" %>
+          <% if toilet.user.photo.file.nil? %>
+            <%= link_to image_tag("poop.jpg", alt: "alttext", class: "card-trip-user avatar-bordered"), "#" %>
+          <% else %>
+            <%= link_to image_tag(toilet.user.photo, alt: "alttext", class: "card-trip-user avatar-bordered"), "#" %>
+          <% end %>
         </div>
       </div>
     </ul>
