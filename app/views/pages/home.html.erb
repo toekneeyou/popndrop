@@ -4,7 +4,37 @@
     <h2>Change your life and relax on the throne</p>
     <%= link_to "See all toilets", toilets_path %>
   </div>
-  <%= render 'shared/search_form' %>
 </div>
 
-</div>
+<div class="container">
+  <br>
+    <h2 class="text-center">How it works</h2>
+  <br>
+    <div class="cards row d-flex justify-content-around">
+      <div class="card" style="width: 18rem;">
+        <%= image_tag ("sign-up.jpg"), class:'card-img-top' %>
+        <div class="card-body">
+          <h4>Sign up.</h4>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <%= image_tag ("find.jpg"), class:'card-img-top' %>
+        <div class="card-body">
+          <h4>Find toilets.</h4>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <%= image_tag ("drop.jpg"), class:'card-img-top' %>
+        <div class="card-body">
+          <h4>Let it drop.</h4>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
