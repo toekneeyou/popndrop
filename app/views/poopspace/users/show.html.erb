@@ -1,7 +1,7 @@
 <% if current_user.id == params[:id].to_i%>
-  <%= render 'show_current' %>
+  <%= render 'show_host' %>
   <!-- display user's toilets, list a new toilet, and current bookings -->
 <% else %>
-  <%= render 'show_other' %>
+  <%= render 'show_guest' %>
   <!-- display user's info and toilets. no toilet form or current bookings. -->
 <% end %>
