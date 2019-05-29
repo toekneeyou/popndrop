@@ -21,12 +21,10 @@
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :photo %>
         <%= f.input :photo_cache, as: :hidden %>
-
-        <button type="button" class="btn btn-primary form-actions">
-          <%= f.button :submit, "Sign up" %>
-        </button>
       <br>
-      <%= render "devise/shared/links" %>
+        <button type="button" class="btn btn-primary form-actions mx-auto" style="width: 200px;"><%= f.button :submit, "Sign up" %></button>
+      <br>
+      <button type="button" class="btn btn-link"><%= render "devise/shared/links" %></button>
       </div>
     <% end %>
   </div>
