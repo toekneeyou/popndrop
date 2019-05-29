@@ -6,26 +6,27 @@
     <h2>See all our great toilets below</p>
   </div>
 </div>
-<br>
-<br>
-<ol class="d-flex">
-  <% @toilets.each do |toilet| %>
-    <ul>
-      <div class="card-trip">
-        <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
-        <div class="card-trip-infos">
-          <div>
-            <h2><%= link_to toilet.name, toilet_path(toilet) %></h2>
-            <p><%= toilet.description %></p>
+
+<div class="d-flex">
+  <ul>
+    <% @toilets.each do |toilet| %>
+      <li>
+        <div class="card-trip">
+          <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= link_to toilet.name, toilet_path(toilet) %></h2>
+              <p><%= toilet.description %></p>
+            </div>
+            <h2 class="card-trip-pricing">$<%= toilet.rate %> / min</h2>
+            <% if toilet.user.photo.file.nil? %>
+              <%= link_to image_tag("poop.jpg", alt: "alttext", class: "card-trip-user avatar-bordered"), "#" %>
+            <% else %>
+              <%= link_to image_tag(toilet.user.photo, alt: "alttext", class: "card-trip-user avatar-bordered"), "#" %>
+            <% end %>
           </div>
-          <h2 class="card-trip-pricing">$<%= toilet.rate %> / min</h2>
-          <% if toilet.user.photo.file.nil? %>
-            <%= link_to image_tag("poop.jpg", alt: "alttext", class: "card-trip-user avatar-bordered"), "#" %>
-          <% else %>
-            <%= link_to image_tag(toilet.user.photo, alt: "alttext", class: "card-trip-user avatar-bordered"), "#" %>
-          <% end %>
         </div>
-      </div>
-    </ul>
-  <% end %>
-</ol>
+      </li>
+    <% end %>
+  </ul>
+</div>
