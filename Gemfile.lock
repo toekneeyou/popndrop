@@ -81,6 +81,7 @@ GEM
     ffi (1.11.1)
     font-awesome-sass (5.6.1)
       sassc (>= 1.11)
+    geocoder (1.5.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashie (3.6.0)
@@ -244,6 +245,7 @@ DEPENDENCIES
   dotenv
   dotenv-rails
   font-awesome-sass (~> 5.6.1)
+  geocoder
   jbuilder (~> 2.0)
   listen (~> 3.0.5)
   omniauth-facebook
