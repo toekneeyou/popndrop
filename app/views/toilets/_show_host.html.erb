@@ -1,9 +1,44 @@
-as the owner of the toilet, i can view and edit the toilet, what else?
+<div class="d-flex justify-content-start">
+  <div class='booking-container d-flex justify-content-between'>
+    <!-- contains booking-card and booking-map -->
+    <div class='booking-card'>
+      <h1 class='booking-padding'>
+        <%= @toilet.name %>
+      </h1>
+      <img src="http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg">
 
-<div
-id="map"
-style="width: 100%;
-height: 600px;"
-data-markers="<%= @markers.to_json %>"
-data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
+      <div class='booking-time border-bottom d-flex justify-content-between booking-padding'>
+        <div class='booking-checkin'>
+          <h3><%= @toilet.name %></h3>
+          <p><%= @toilet.description %></p>
+        </div>
+      </div>
+
+      <div class='booking-cost border-bottom booking-padding'>
+        <h3>Current Rate</h3>
+        <p><%= @toilet.rate %></p>
+      </div>
+
+      <div class='booking-cost border-bottom booking-padding'>
+        <h3>Who's coming next?</h3>
+        <% @toilet.bookings.each do |booking| %>
+          <%= booking %>
+          <div class='booking-padding'>
+            <h2>Guest Name</h2>
+            <h3>Guest Rating</h3>
+          </div>
+        <% end %>
+      </div>
+      <br>
+      <div class='booking-padding d-flex justify-content-center'>
+        <%= link_to 'Edit this Toilet!', toilet_path(params[:id]), method: :edit, class:'btn btn-danger m-1' %>
+        <%= link_to 'Back to your Poopspace', poopspace_user_path(current_user), class:'btn btn-primary m-1' %>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div id="map" style="width: 100vw;height: 100vh;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>
