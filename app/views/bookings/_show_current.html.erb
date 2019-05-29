@@ -27,13 +27,8 @@
         <%= link_to 'Cancel Reservation', booking_path(params[:id]), method: :delete, class:'btn btn-danger' %>
       </div>
     </div>
-
-
-    <div class='booking-map'>
-      <div id="map" style="width: 100%;height: 600px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-    </div>
   </div>
+
 
   <div class='guest-card text-center'>
     <div>
@@ -50,5 +45,8 @@
         <h3>Bali</h3>
       </div>
     </div>
+  </div>
+
+  <div id="map" style="width: 100vw;height: 100vh;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
