@@ -4,7 +4,6 @@ class ToiletsController < ApplicationController
 
   def index
     @toilets = Toilet.where.not(latitude: nil, longitude: nil)
-
     @markers = @toilets.map do |toilet|
       {
         lat: toilet.latitude,
