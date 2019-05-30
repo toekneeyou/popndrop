@@ -28,7 +28,7 @@ const initMapbox = (initCoord) => {
   const fitMapToMarkers = (map, markers) => {
     const bounds = new mapboxgl.LngLatBounds();
     markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-    map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
+    map.fitBounds(bounds, { padding: 50, maxZoom: 16 });
   };
 
   if (mapElement) { // only build a map if there's a div#map to inject into
@@ -41,9 +41,13 @@ const initMapbox = (initCoord) => {
 
     if(document.querySelector('.home-map')) {
       markers.push(initCoord);
+      const fitbox = [initCoord]
+      fitMapToMarkers(map, fitbox)
+      addMarkersToMap(map, markers);
+    } else {
+      addMarkersToMap(map, markers)
+      fitMapToMarkers(map, markers);
     }
-    addMarkersToMap(map, markers);
-    fitMapToMarkers(map, markers);
     map.addControl(new mapboxgl.NavigationControl());
     map.scrollZoom.disable();
   }
