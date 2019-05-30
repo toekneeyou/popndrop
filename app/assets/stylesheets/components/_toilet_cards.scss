@@ -43,9 +43,17 @@
 .card-col .card-rating {
   position: absolute;
   right: 16px;
-  width: 40px;
   top: -185px;
-  background-color: lightgray;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.card-col .card-pricing {
+  position: absolute;
+  left: 16px;
+  top: -185px;
+  background-color: white;
   border-radius: 5px;
   padding: 5px;
 }

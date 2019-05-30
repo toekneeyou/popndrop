@@ -16,7 +16,7 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
               <p><%= toilet.description %></p>
             </div>
 
-            <h2 class="card-pricing">$<%= toilet.rate %> / min</h2>
+            <h2 class="card-pricing">$<%= toilet.rate %> <span style='font-size:10px'>/min</span></h2>
             <% if toilet.user.photo.file.nil? %>
               <%= link_to image_tag("paper.png", alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
             <% else %>
