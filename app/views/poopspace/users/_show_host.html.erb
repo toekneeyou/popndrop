@@ -130,7 +130,6 @@
             </div>
           </div>
         </div>
-
         <div class="poopspace-container d-flex border-bottom">
           <div class="listings">
             <div class='d-flex justify-content-start mb-2'>
@@ -171,11 +170,15 @@
             </div>
           </div>
         </div>
+        <div class='card-padding'>
+          <p>Joined in <%= @user.created_at %></p>
+          <p>other stuff here</p>
+        </div>
+        <%= link_to 'Edit Profile', '#', class:'btn btn-primary' %>
       </div>
     </div>
   </div>
 </div>
-
 <div class="modal fade" id="listToilet" tabindex="-1" role="dialog" aria-labelledby="listToilet" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
