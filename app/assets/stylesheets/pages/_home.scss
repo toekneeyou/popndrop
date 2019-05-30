@@ -1,7 +1,6 @@
 // Specific CSS for your home-page
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -16,6 +15,7 @@
   background-size: cover;
   background-position: center;
   padding: 125px 75px 285px 75px;
+  margin-top: -78px;
 }
 
 .banner h1 {
@@ -29,12 +29,7 @@
 .banner h2 {
   font-size: 20px;
   color: #4a4a4a;
-  opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-
-h1 {
-  opacity: .75;
 }
 
 .has-search .form-control {

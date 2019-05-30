@@ -1,7 +1,7 @@
 <% if current_user.id == @booking.toilet.user_id%>
-  <%= render 'show_current' %>
+  <%= render 'show_host' %>
   <!-- display booking with ability to decline, review user, what else? -->
 <% else %>
-  <%= render 'show_other' %>
+  <%= render 'show_guest' %>
   <!-- display booking with ability to cancel, review toilet, what else? -->
 <% end %>

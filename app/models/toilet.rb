@@ -1,7 +1,7 @@
 class Toilet < ApplicationRecord
   belongs_to :user
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 20 }
   validates :address, presence: true
   validates :rate, presence: true
   validates :description, presence: true
