@@ -23,8 +23,12 @@ class ReviewsController < ApplicationController
       @review.reviewable = @guest
     end
     @review.user = current_user
-    @review.save
-    redirect_to booking_path(@booking)
+    if
+      @review.save
+      redirect_to booking_path(@booking)
+    else
+      render :new
+    end
   end
 
   private
