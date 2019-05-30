@@ -53,7 +53,7 @@ class ToiletsController < ApplicationController
 
   def destroy
     @toilet.destroy
-    redirect_to root_path
+    redirect_to poopspace_user_path(@toilet.user_id)
   end
 
   private
