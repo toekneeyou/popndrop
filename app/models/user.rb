@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :encrypted_password, presence: true
 
   has_many :bookings
-  has_many :reviews, through: :bookings
+  has_many :reviews
   has_many :reviews, as: :reviewable
 
   devise :database_authenticatable, :registerable,
