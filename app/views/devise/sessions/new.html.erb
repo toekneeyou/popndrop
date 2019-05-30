@@ -1,20 +1,26 @@
-<h2>Log in</h2>
+<div class="banner" style="background-image:url(https://image.redbull.com/rbcom/010/2015-05-07/1331721593940_2/0010/1/2050/1367/1/a-remote-outhouse-in-the-cascade-mountains-in-washington-state-usa.jpg);">
+  <div class="mx-auto p-3 mb-2 bg-light text-dark rounded-lg" style="width: 300px;">
+    <h2 class="mx-auto text-center" style="width: 200px;">Log In</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs mx-auto" style="width: 200px;">
+      <%= f.input :email,
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" } %>
+      <%= f.input :password,
+                  required: false,
+                  input_html: { autocomplete: "current-password" } %>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    </div>
+    <div class="text-center">
+      <%= f.button :submit, 'Log In', class:'btn btn-primary form-actions mx-auto', style:'width:200px;' %>
+    </div>
+    <% end %>
+    <div class="text-center">
+      <button type="button" class="btn btn-link">
+        <%= render "devise/shared/links" %>
+      </button>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
