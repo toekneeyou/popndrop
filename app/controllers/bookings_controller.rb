@@ -28,7 +28,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.toilet = @toilet
     @booking.user = current_user
-    @booking.price = @booking.toilet.rate * (@booking.check_out - @booking.check_in)
+    @booking.price = @booking.toilet.rate * ((@booking.check_out - @booking.check_in)/60)
     if @booking.save
       redirect_to booking_path(@booking)
     else
