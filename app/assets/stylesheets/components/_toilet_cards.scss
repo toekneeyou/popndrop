@@ -7,7 +7,7 @@
 }
 
 .card-col > img {
-  height: 200px;
+  height: 175px;
   width: 100%;
   object-fit: cover;
 }
@@ -38,4 +38,14 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.card-col .card-rating {
+  position: absolute;
+  right: 16px;
+  width: 40px;
+  top: -185px;
+  background-color: lightgray;
+  border-radius: 5px;
+  padding: 5px;
 }
