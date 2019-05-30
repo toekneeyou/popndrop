@@ -5,7 +5,7 @@
     </span>
     <p>
     <%= simple_form_for [@toilet] do |f| %>
-    <%= f.input :name %>
+    <%= f.input :name, maxlength: 20 %>
     <%= f.input :description %>
     <%= f.input :address %>
     <%= f.input :rate %>

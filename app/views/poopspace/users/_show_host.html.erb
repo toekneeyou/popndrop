@@ -21,7 +21,7 @@
             <%= link_to image_tag("https://kitt.lewagon.com/placeholder/users/ssaunier", alt: "alttext", class: "card-trip-user avatar-bordered"), "#" %>
           </div>
         </div>
-      <% end %> 
+      <% end %>
     </div>
   </div>
 
@@ -30,14 +30,14 @@
     <div class='booking-cards-container justify-content-start'>
       <% @bookings.each do |booking| %>
         <div class="card-trip">
-          <%= link_to image_tag("http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg", alt: "alttext", class: "card-img-top"), toilet_path(booking.toilet) %>
+          <%= link_to image_tag("http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg", alt: "alttext", class: "card-img-top"), booking_path(booking.id) %>
           <div class="card-trip-infos">
             <div>
               <h2><%= booking.toilet.name %></h2>
               <p><%= booking.toilet.address %></p>
             </div>
             <h2 class="card-trip-pricing"><%= booking.check_in %></h2>
-            <%= link_to image_tag("https://kitt.lewagon.com/placeholder/users/ssaunier", alt: "alttext", class: "card-trip-user avatar-bordered"), "#" %>
+            <%= link_to image_tag("https://kitt.lewagon.com/placeholder/users/ssaunier", alt: "alttext", class: "card-trip-user avatar-bordered"), poopspace_user_path(booking.toilet.user_id) %>
           </div>
         </div>
       <% end %>

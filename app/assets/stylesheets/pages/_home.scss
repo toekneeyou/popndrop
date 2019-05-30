@@ -1,4 +1,3 @@
-// Specific CSS for your home-page
 .navbar-lewagon {
   justify-content: space-between;
 }
@@ -13,23 +12,60 @@
 
 .banner {
   background-size: cover;
-  background-position: center;
-  padding: 125px 75px 285px 75px;
+  background-position: bottom;
+  padding: 125px 0 0 0;
   margin-top: -78px;
-}
-
-.banner h1 {
-  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  h1 {
+  margin-top: 100px;
   color: #575757;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 3px 3px 3px rgba(0,0,0,0.2);
   font-size: 44px;
   font-weight: bold;
-}
-
-.banner h2 {
+  }
+  h2 {
+  opacity: 0;
+  animation: fadein 1.5s;
+  animation-delay: 3s;
+  animation-fill-mode: forwards;
   font-size: 20px;
   color: #4a4a4a;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 3px 3px 3px rgba(0,0,0,0.2);
+  }
+  .form-control {
+  opacity: 0;
+  animation: fadein 1.5s;
+  animation-delay: 3.5s;
+  animation-fill-mode: forwards;
+  }
+  a {
+  opacity: 0;
+  animation: fadein 1.5s;
+  animation-delay: 3s;
+  animation-fill-mode: forwards;
+  }
+}
+
+#pop {
+  opacity: 0;
+  animation: fadein 2s;
+  animation-delay: 0s;
+  animation-fill-mode: forwards;
+}
+
+#n {
+  opacity: 0;
+  animation: fadein 2s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
+
+#drop{
+  opacity: 0;
+  animation: fadein 2s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
 }
 
 .has-search .form-control {
@@ -46,4 +82,8 @@
   text-align: center;
   pointer-events: none;
   color: #aaa;
+}
+
+@keyframes fadein {
+  100% { opacity: 1 }
 }
