@@ -1,38 +1,30 @@
-<div class="banner-index">
-  <div>
-    <h1>Find the perfect toilet now!</h1>
-    <h2>See all our great toilets below</p>
-  </div>
-</div>
-
 <div
 id="map"
 style="width: 100%;
-height: 600px;"
+height: 50vh;"
 data-markers="<%= @markers.to_json %>"
 data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
 
-<div>
-  <ul class="d-flex" style='list-style:none;'>
+<div class="scroll-cards">
+  <div class="row text-center" style='list-style:none;'>
     <% @toilets.each do |toilet| %>
-      <li>
-        <div class="card-trip m-3">
+        <div class="card-col m-3">
           <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
-          <div class="card-trip-infos">
+          <div class="card-infos">
             <div>
               <h2><%= link_to toilet.name, toilet_path(toilet) %></h2>
               <p><%= toilet.description %></p>
             </div>
-            <h2 class="card-trip-pricing">$<%= toilet.rate %> / min</h2>
+            <h2 class="card-pricing">$<%= toilet.rate %> / min</h2>
             <% if toilet.user.photo.file.nil? %>
-              <%= link_to image_tag("paper.png", alt: "avatar", class: "card-trip-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
+              <%= link_to image_tag("paper.png", alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
             <% else %>
-              <%= link_to cl_image_tag(toilet.user.photo, alt: "avatar", class: "card-trip-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
+              <%= link_to cl_image_tag(toilet.user.photo, alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
             <% end %>
           </div>
         </div>
-      </li>
     <% end %>
-  </ul>
+  </div>
 </div>
+
