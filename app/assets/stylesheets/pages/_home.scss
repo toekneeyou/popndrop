@@ -24,7 +24,7 @@
   font-size: 44px;
   font-weight: bold;
   }
-  h2 {
+  h3 {
   opacity: 0;
   animation: fadein 1.5s;
   animation-delay: 3s;
@@ -33,18 +33,13 @@
   color: #4a4a4a;
   text-shadow: 3px 3px 3px rgba(0,0,0,0.2);
   }
-  .form-control {
-  opacity: 0;
-  animation: fadein 1.5s;
-  animation-delay: 3.5s;
-  animation-fill-mode: forwards;
-  }
-  a {
+}
+
+.toilet-button {
   opacity: 0;
   animation: fadein 1.5s;
   animation-delay: 3s;
   animation-fill-mode: forwards;
-  }
 }
 
 #pop {
