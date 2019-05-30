@@ -1,2 +1,15 @@
-<h3>Nice choice!</h3>
-<p>This is <%= toilet.name %>!</p>
+<div>
+  <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
+  <div class="mapboxgl-popup-content">
+    <div class="p-3">
+      <h2><%= link_to toilet.name, toilet_path(toilet) %></h2>
+      <p><%= toilet.description %></p>
+    </div>
+    <h2 class="card-trip-pricing p-3">$<%= toilet.rate %> / min</h2>
+    <% if toilet.user.photo.file.nil? %>
+      <%= link_to image_tag("paper.png", alt: "avatar", class: "card-trip-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
+    <% else %>
+      <%= link_to cl_image_tag(toilet.user.photo, alt: "avatar", class: "card-trip-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
+    <% end %>
+  </div>
+</div>

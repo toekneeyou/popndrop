@@ -18,7 +18,12 @@
         <div class="listings-cards-container justify-content-start">
           <% @bookings.each do |booking| %>
             <div class="card-trip">
-              <%= link_to image_tag("http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg", alt: "alttext", class: "card-img-top"), booking_path(booking.id) %>
+              <% if booking.toilet.photo.url.nil? %>
+                <%= link_to image_tag("http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg", alt: "alttext", class: "card-img-top"), booking_path(booking.id) %>
+              <% else %>
+                <%= link_to image_tag(booking.toilet.photo.url, alt: "alttext", class: "card-img-top"), booking_path(booking.id) %>
+              <% end %>
+
               <div class="card-trip-infos">
                 <div>
                   <h2><%= booking.toilet.name %></h2>
@@ -43,7 +48,11 @@
         <div class="listings-cards-container justify-content-start">
           <% @toilets.each do |toilet| %>
             <div class="card-trip">
-              <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
+              <% if toilet.photo.url.nil? %>
+                <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
+              <% else %>
+                <%= link_to image_tag(toilet.photo.url, alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
+              <% end %>
               <div class="card-trip-infos">
                 <div>
                   <h2><%= link_to toilet.name, toilet_path(toilet) %></h2>
@@ -122,9 +131,13 @@
         <%= f.input :description, placeholder: "World's Best Throne"%>
         <%= f.input :address, placeholder: '20 W 34th St, New York, NY 10001, USA'%>
         <%= f.input :rate, label: 'Cost per minute', placeholder: '$1' %>
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
         <%= f.button :submit, 'List this toilet', class: 'btn btn-primary'%>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+
+

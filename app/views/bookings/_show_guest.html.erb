@@ -4,8 +4,11 @@
     <h1 class='booking-padding'>
       <%= @toilet.name %>
     </h1>
-    <img src="http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg">
-
+    <% if @toilet.photo.url.nil? %>
+      <img src="http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg">
+    <% else %>
+      <img src="<%= @toilet.photo.url %>">
+    <% end %>
     <div class='booking-time border-bottom d-flex justify-content-between booking-padding'>
       <div class='booking-checkin'>
         <h3>Check-In</h3>
@@ -20,7 +23,7 @@
     <div class='booking-host border-bottom d-flex justify-content-between booking-padding'>
       <div class='booking-toilet'>
         <h3><%= @toilet.name %></h3>
-        <p>Hosted by <%= @user.first_name %></p>
+        <p>Hosted by <%= @host.first_name %></p>
       </div>
       <h3>avatar</h3>
     </div>
@@ -42,3 +45,6 @@
   <div id="map" style="width: 100vw;height: 100vh;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
+
+<%= render 'shared/review_form', object: @booking %>
+

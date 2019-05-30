@@ -5,7 +5,11 @@
       <h1 class='booking-padding'>
         <%= @toilet.name %>
       </h1>
-      <img src="http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg">
+      <% if @toilet.photo.url.nil? %>
+        <img src="http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg">
+      <% else %>
+        <img src="<%= @toilet.photo.url %>">
+      <% end %>
 
       <div class='booking-time border-bottom d-flex justify-content-between booking-padding'>
         <div class='booking-checkin'>
@@ -31,8 +35,9 @@
       </div>
       <br>
       <div class='booking-padding d-flex justify-content-center'>
-        <%= link_to 'Edit this Toilet!', toilet_path(params[:id]), method: :edit, class:'btn btn-danger m-1' %>
-        <%= link_to 'Back to your Poopspace', poopspace_user_path(current_user), class:'btn btn-primary m-1' %>
+        <%= link_to 'Edit', toilet_path(params[:id]), method: :edit, class:'btn btn-light m-1' %>
+        <%= link_to 'Go Back', poopspace_user_path(current_user), class:'btn btn-light m-1' %>
+        <%= link_to 'Delete', toilet_path(params[:id]), method: :delete, class:'btn btn-danger m-1' %>
       </div>
     </div>
   </div>

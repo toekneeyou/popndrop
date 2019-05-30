@@ -1,5 +1,5 @@
-<%= simple_form_for [@ review, '@toilet or @user'] do |f| %>
-<%= f.input :rating, inclusion: { in: (0..5).to_a } %>
+<%= simple_form_for [object, @review] do |f| %>
+<%= f.input :rating, collection: (0..5).to_a %>
 <%= f.input :content %>
 <%= f.submit %>
 <% end %>
