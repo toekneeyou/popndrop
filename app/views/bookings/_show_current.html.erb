@@ -1,0 +1,52 @@
+<div class="d-flex justify-content-start">
+  <div class='booking-container d-flex justify-content-between'>
+    <!-- contains booking-card and booking-map -->
+    <div class='booking-card'>
+      <h1 class='booking-padding'>
+        <%= @toilet.name %>
+      </h1>
+      <img src="http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg">
+
+      <div class='booking-time border-bottom d-flex justify-content-between booking-padding'>
+        <div class='booking-checkin'>
+          <h3>Check-In</h3>
+          <p><%= @booking.check_in %></p>
+        </div>
+        <div class='booking-checkout'>
+          <h3>Check-out</h3>
+          <p><%= @booking.check_out %></p>
+        </div>
+      </div>
+
+      <div class='booking-cost border-bottom booking-padding'>
+        <h3>Total cost</h3>
+        <p>$1,000,000</p>
+      </div>
+
+      <div class='booking-padding d-flex justify-content-center'>
+        <%= link_to 'Cancel Reservation', booking_path(params[:id]), method: :delete, class:'btn btn-danger' %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class='guest-card text-center'>
+    <div>
+      <h1 style='padding:20px 20px 0 20px'>Who's coming?</h1>
+      <div class='booking-padding border-bottom d-flex justify-content-center'>
+        <% if @guest.photo.file.nil? %>
+          <%= image_tag ('paper.png'), class:"avatar-huge" %>
+        <% else %>
+          <%= cl_image_tag @guest.photo, class:"avatar-huge" %>
+        <% end %>
+      </div>
+      <div class='booking-padding'>
+        <h2><%= @guest.first_name %> <%= @guest.last_name %></h2>
+        <h3>Bali</h3>
+      </div>
+    </div>
+  </div>
+
+  <div id="map" style="width: 100vw;height: 100vh;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+</div>

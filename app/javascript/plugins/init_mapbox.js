@@ -40,10 +40,8 @@ const initMapbox = () => {
     const markers = JSON.parse(mapElement.dataset.markers);
     addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
-    map.addControl(new MapboxGeocoder({
-      accessToken: mapboxgl.accessToken,
-      mapboxgl: mapboxgl
-    }));
+    map.addControl(new mapboxgl.NavigationControl());
+    map.scrollZoom.disable();
   }
 };
 
