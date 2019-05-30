@@ -13,15 +13,11 @@
 .banner {
   background-size: cover;
   background-position: bottom;
-  padding: 125px 75px 285px 75px;
+  padding: 125px 0 0 0;
   margin-top: -78px;
-  height: 800px;
+  height: 100vh;
   width: 100vw;
   h1 {
-  opacity: 0;
-  animation: fadein 2s;
-  animation-delay: 0s;
-  animation-fill-mode: forwards;
   margin-top: 100px;
   color: #575757;
   text-shadow: 3px 3px 3px rgba(0,0,0,0.2);
@@ -31,7 +27,7 @@
   h2 {
   opacity: 0;
   animation: fadein 1.5s;
-  animation-delay: 1.5s;
+  animation-delay: 3s;
   animation-fill-mode: forwards;
   font-size: 20px;
   color: #4a4a4a;
@@ -40,7 +36,7 @@
   .form-control {
   opacity: 0;
   animation: fadein 1.5s;
-  animation-delay: 3s;
+  animation-delay: 3.5s;
   animation-fill-mode: forwards;
   }
   a {
@@ -49,6 +45,27 @@
   animation-delay: 3s;
   animation-fill-mode: forwards;
   }
+}
+
+#pop {
+  opacity: 0;
+  animation: fadein 2s;
+  animation-delay: 0s;
+  animation-fill-mode: forwards;
+}
+
+#n {
+  opacity: 0;
+  animation: fadein 2s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
+
+#drop{
+  opacity: 0;
+  animation: fadein 2s;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
 }
 
 .has-search .form-control {
