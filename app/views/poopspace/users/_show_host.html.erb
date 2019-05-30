@@ -56,11 +56,38 @@
         </div>
       </div>
     </div>
+
+    <div class="poopspace-container d-flex border-bottom">
+      <div class="upcoming">
+        <div class='d-flex justify-content-start mb-2'>
+          <h1>Here are your Upcoming Guests!</h1>
+          <div class='d-flex align-items-center ml-2'>
+          </div>
+        </div>
+        <div class="listings-cards-container justify-content-start">
+          <% @upcoming_bookings.each do |booking| %>
+            <div class="card-trip">
+              <%= link_to image_tag("http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg", alt: "alttext", class: "card-img-top"), booking_path(booking.id) %>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= booking.toilet.name %></h2>
+                  <p><%= booking.toilet.address %></p>
+                  <p>$<%= booking.price %>
+                </div>
+                <h2 class="card-trip-pricing"><%= booking.check_in %></h2>
+                <%= link_to image_tag("https://kitt.lewagon.com/placeholder/users/ssaunier", alt: "alttext", class: "card-trip-user avatar-bordered"), poopspace_user_path(booking.toilet.user_id) %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+
 
   <div class='profile-container-super d-flex justify-content-center'>
     <div class="profile-container" style="margin-top:20px;">
-      <div>
         <div class='profile-card card-padding'>
           <div class='profile-picture border-bottom'>
             <%= cl_image_tag current_user.photo, class:'avatar-huge' %>
@@ -78,8 +105,7 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
+
 
 <div class="modal fade" id="listToilet" tabindex="-1" role="dialog" aria-labelledby="listToilet" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -92,10 +118,10 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for [@toilet] do |f| %>
-        <%= f.input :name, maxlength: 20 %>
-        <%= f.input :description %>
-        <%= f.input :address %>
-        <%= f.input :rate %>
+        <%= f.input :name, maxlength: 20, placeholder: 'Comfort Room', opacity: 3%>
+        <%= f.input :description, placeholder: "World's Best Throne"%>
+        <%= f.input :address, placeholder: '20 W 34th St, New York, NY 10001, USA'%>
+        <%= f.input :rate, label: 'Cost per minute', placeholder: '$1' %>
         <%= f.button :submit, 'List this toilet', class: 'btn btn-primary'%>
         <% end %>
       </div>
