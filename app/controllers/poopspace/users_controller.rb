@@ -13,5 +13,8 @@ class Poopspace::UsersController < ApplicationController
     end
     @toilet = Toilet.new
     @user = User.find(params[:id])
+    @hostings = Booking.select do |booking|
+      booking.toilet.user_id == current_user.id
+    end
   end
 end

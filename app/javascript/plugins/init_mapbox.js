@@ -3,7 +3,7 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 
 
-const initMapbox = () => {
+const initMapbox = (initCoord) => {
   const mapElement = document.getElementById('map');
   const addMarkersToMap = (map, markers) => {
     markers.forEach((marker) => {
@@ -38,6 +38,10 @@ const initMapbox = () => {
       style: 'mapbox://styles/tylermcwilliam/cjw8rcrwg14np1cl6wm6pzumk' // <-- use your own!
     });
     const markers = JSON.parse(mapElement.dataset.markers);
+
+    if(document.querySelector('.home-map')) {
+      markers.push(initCoord);
+    }
     addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
     map.addControl(new mapboxgl.NavigationControl());
