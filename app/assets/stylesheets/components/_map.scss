@@ -1,8 +1,36 @@
 .mapboxgl-popup {
-  max-width: 200px;
+  padding: 0px!important;
 }
 
-.mapboxgl-popup-content {
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
+.mapboxgl-popup > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.mapboxgl-popup h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.mapboxgl-popup p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+.mapboxgl-popup .mapboxgl-popup-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  padding: 0px!important;
+}
+
+.mapboxgl-popup-content .card-trip-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
 }
