@@ -9,21 +9,26 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 <div class="scroll-cards">
   <div class="row text-center" style='list-style:none;'>
     <% @toilets.each do |toilet| %>
-        <div class="card-col m-3">
+      <div class="card-col m-3">
+        <% if toilet.photo.url.nil? %>
           <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
-          <div class="card-infos">
-            <div>
-              <h2><%= link_to toilet.name, toilet_path(toilet) %></h2>
-              <p><%= toilet.description %></p>
-            </div>
-            <h2 class="card-pricing">$<%= toilet.rate %> / min</h2>
-            <% if toilet.user.photo.file.nil? %>
-              <%= link_to image_tag("paper.png", alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
-            <% else %>
-              <%= link_to cl_image_tag(toilet.user.photo, alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
-            <% end %>
+        <% else %>
+          <%= link_to image_tag(toilet.photo.url, alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
+        <% end %>
+
+        <div class="card-infos">
+          <div>
+            <h2><%= link_to toilet.name, toilet_path(toilet) %></h2>
+            <p><%= toilet.description %></p>
           </div>
+          <h2 class="card-pricing">$<%= toilet.rate %> / min</h2>
+          <% if toilet.user.photo.file.nil? %>
+            <%= link_to image_tag("paper.png", alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
+          <% else %>
+            <%= link_to cl_image_tag(toilet.user.photo, alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
+          <% end %>
         </div>
+      </div>
     <% end %>
   </div>
 </div>
