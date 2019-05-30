@@ -20,6 +20,7 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
         <div class="card-infos">
           <div class='d-flex flex-column justify-content-start align-items-start'>
             <h2><%= link_to toilet.name, toilet_path(toilet) %></h2>
+            <p><i><%= toilet.address %></i></p>
             <p><%= toilet.description %></p>
           </div>
 
