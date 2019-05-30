@@ -1,6 +1,5 @@
-<%= simple_form_for [@booking @review] do |f| %>
-<%= f.input :reviewable, collection: (Toilet.find(@booking.toilet_id) %>
-<%= f.input :rating, inclusion: { in: (0..5).to_a } %>
+<%= simple_form_for [object, @review] do |f| %>
+<%= f.input :rating, collection: (0..5).to_a %>
 <%= f.input :content %>
 <%= f.submit %>
 <% end %>

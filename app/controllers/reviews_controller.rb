@@ -15,7 +15,13 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.reviewable = @booking
+    @guest = @booking.user
+    raise
+    if @guest == current_user
+      @review.reviewable = @booking
+    else
+      @review.reviewable = @guest
+    end
     @review.user = current_user
     @review.save
     redirect_to booking_path(@booking)

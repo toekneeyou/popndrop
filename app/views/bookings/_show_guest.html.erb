@@ -43,8 +43,5 @@
   </div>
 </div>
 
-<%= simple_form_for [@booking, @review] do |f| %>
-<%= f.input :rating, collection: (0..5).to_a %>
-<%= f.input :content %>
-<%= f.submit %>
-<% end %>
+<%= render 'shared/review_form', object: @booking %>
+
