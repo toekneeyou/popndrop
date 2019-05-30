@@ -3,7 +3,7 @@
   color: #575757;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 44px;
-  padding: 25px 25px 0px 50px;
+  padding: 30px 30px;
   font-weight: bold;
   h1 {
   margin: 0;
@@ -22,16 +22,23 @@
 
 .poopspace-container {
   padding: 20px;
+  h1 {
+    margin: 0 0 0 10px;
+  }
 }
 
 header {
-  width:900px; 
-  float:left; 
+  width:900px;
+  float:left;
   height: 50px;
 }
 
+.profile-container-super {
+  width: 40vw;
+}
+
 .listings {
-  width: 50vw;
+  width: 60vw;
   color: #575757;
   font-weight: bold;
 }
@@ -42,34 +49,16 @@ header {
   width: 100%
 }
 
-.bookings {
-  width: 50vw;
-  color: #575757;
-  font-weight: bold;
-}
-
 .listings-box {
-  width:300px; 
-  float:left; 
+  width:300px;
+  float: left;
   height: 150px;
-  margin: 50px
-}
-
-.listings-box p {
+  margin: 50px;
+  p {
   color: #ffffff;
   padding-left: 80px;
   padding-top: 50px;
+  }
 }
 
-.booking-cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%
-}
-
-.booking-card-container p {
-  color: #ffffff;
-  padding-left: 110px;
-  padding-top: 40px;
-}
 
