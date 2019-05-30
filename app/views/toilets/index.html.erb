@@ -5,7 +5,7 @@ data-markers="<%= @markers.to_json %>"
 data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 ></div>
 
-<div class="scroll-cards">
+<div class="scroll-cards" style="background-color:#f6f6f4;">
   <div class="row text-center" style='list-style:none;'>
     <% @toilets.each do |toilet| %>
       <div class="card-col m-3">
@@ -46,7 +46,7 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
               <% average = (sum_rating / num_rating) if num_rating != 0%>
               <%= average %>/5
             </h2>
-            
+
           </div>
           <h2 class="card-pricing">$<%= toilet.rate %> / min</h2>
           <% if toilet.user.photo.file.nil? %>
