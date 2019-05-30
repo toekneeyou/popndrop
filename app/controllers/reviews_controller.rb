@@ -16,7 +16,6 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @guest = @booking.user
-    raise
     if @guest == current_user
       @review.reviewable = @booking
     else

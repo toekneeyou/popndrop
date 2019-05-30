@@ -4,7 +4,6 @@ class ToiletsController < ApplicationController
 
   def index
     @toilets = Toilet.where.not(latitude: nil, longitude: nil)
-
     @markers = @toilets.map do |toilet|
       {
         lat: toilet.latitude,
@@ -59,7 +58,7 @@ class ToiletsController < ApplicationController
   private
 
   def toilet_params
-    params.require(:toilet).permit(:name, :address, :rate, :description)
+    params.require(:toilet).permit(:name, :address, :rate, :description, :photo, :photo_cache)
   end
 
   def set_toilet

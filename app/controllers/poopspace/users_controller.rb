@@ -11,10 +11,11 @@ class Poopspace::UsersController < ApplicationController
     @bookings = Booking.select do |booking|
       booking.user_id == current_user.id
     end
+
     @toilet = Toilet.new
     @user = User.find(params[:id])
-    @hostings = Booking.select do |booking|
-      booking.toilet.user_id == current_user.id
+    @upcoming_bookings = Booking.select do |booking|
+    booking.toilet.user_id == current_user.id
     end
   end
 end

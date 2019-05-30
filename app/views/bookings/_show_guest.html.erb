@@ -4,8 +4,11 @@
     <h1 class='booking-padding'>
       <%= @toilet.name %>
     </h1>
-    <img src="http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg">
-
+    <% if @toilet.photo.url.nil? %>
+      <img src="http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg">
+    <% else %>
+      <img src="<%= @toilet.photo.url %>">
+    <% end %>
     <div class='booking-time border-bottom d-flex justify-content-between booking-padding'>
       <div class='booking-checkin'>
         <h3>Check-In</h3>
@@ -32,7 +35,7 @@
 
     <div class='booking-cost border-bottom booking-padding'>
       <h3>Total cost</h3>
-      <p>$1,000,000</p>
+      <p>$<%= @booking.price %></p>
     </div>
 
     <div class='booking-padding d-flex justify-content-center'>
