@@ -1,9 +1,17 @@
 .mapboxgl-popup {
+  width: 300px;
+  margin: 10px;
+  overflow: hidden;
+  border-radius: 5px;
+  padding: 0px!important;
+}
+
+.mapboxgl-popup-content {
   padding: 0px!important;
 }
 
 .mapboxgl-popup > img {
-  height: 200px;
+  height: 175px;
   width: 100%;
   object-fit: cover;
 }
@@ -20,17 +28,36 @@
   margin: 0;
 }
 
-.mapboxgl-popup .mapboxgl-popup-content {
+
+.mapboxgl-popup .card-infos {
+  padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
-  padding: 0px!important;
 }
 
-.mapboxgl-popup-content .card-trip-user {
+.mapboxgl-popup .card-user {
   position: absolute;
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.mapboxgl-popup .card-rating {
+  position: absolute;
+  right: 16px;
+  top: -140px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.mapboxgl-popup .card-pricing {
+  position: absolute;
+  left: 16px;
+  top: -140px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
 }
