@@ -1,5 +1,4 @@
 class ReviewsController < ApplicationController
-  before_action :set_booking, only: [:new, :create]
   def index
     @reviews = Review.all
     @review = Review.new
@@ -10,21 +9,27 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @booking = Booking.find(params[:booking_id]) if params.key? :booking_id
     @review = Review.new
   end
 
   def create
+    @booking = Booking.find(params[:booking_id]) if params.key? :booking_id
     @review = Review.new(review_params)
-    @guest = @booking.user
-    if @guest == current_user
+    if params.key? :booking_id
+    raise
       @review.reviewable = @booking
     else
-      @review.reviewable = @guest
+      @review.reviewable = User.find(params[:user_id])
     end
     @review.user = current_user
     if
       @review.save
-      redirect_to booking_path(@booking)
+      if params.key? :booking_id
+        redirect_to booking_path(@booking)
+      else
+        redirect_to poopspace_user_path(params[:user_id])
+      end
     else
       render :new
     end
@@ -37,6 +42,5 @@ class ReviewsController < ApplicationController
   end
 
   def set_booking
-    @booking = Booking.find(params[:booking_id])
   end
 end

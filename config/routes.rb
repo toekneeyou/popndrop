@@ -16,6 +16,10 @@ Rails.application.routes.draw do
       resources :reviews, only: [:new, :create]
   end
 
+  resources :users do
+    resources :reviews, only: [:new, :create]
+  end
+
   namespace :poopspace, only: [:show, :update, :destroy] do
     resources :users, only: [:show, :update, :destroy]
     resources :toilets, only: [:index]
