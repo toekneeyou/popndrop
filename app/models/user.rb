@@ -29,6 +29,7 @@ class User < ApplicationRecord
       user.update(user_params)
     else
       user = User.new(user_params)
+      user.remote_photo_url = user_params[:facebook_picture_url]
       user.password = Devise.friendly_token[0, 20] # Fake password for validation
       user.save
     end
