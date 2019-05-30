@@ -28,3 +28,18 @@
 }
 
 
+.scroll-cards {
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.scroll-cards > .row {
+  display: inline-flex;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}
+
+.scroll-cards > .row > .card-col {
+  display: block;
+  float: none;
+}
