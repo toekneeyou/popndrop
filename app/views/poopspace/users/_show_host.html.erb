@@ -1,170 +1,177 @@
-<div class="banner-poopspace">
-  <div>
+<div class="banner-poopspace d-flex justify-content-center">
+  <div class='d-flex flex-column justify-content-center align-items-center'>
     <h1>Welcome <%= current_user.first_name %></h1>
     <h2>Your Poopspace is where you can manage all of your bodily needs!</h2>
   </div>
 </div>
 
-<div class="d-flex justify-content-between">
-  <div class='d-flex flex-column justify-content-between'>
-    <div class="poopspace-container d-flex border-bottom">
-      <div class="listings">
-        <div class='d-flex justify-content-start mb-2'>
-          <h1>Here are your Bookings!</h1>
-          <div class='d-flex align-items-center ml-2'>
+<div class='d-flex justify-content-center'>
+  <div>
+    <div class='profile-container-super d-flex justify-content-center'>
+      <div class="profile-container" style="margin-top:20px;">
+        <div class='profile-card card-padding'>
+          <div class='profile-picture border-bottom'>
+            <%= cl_image_tag current_user.photo, class:'avatar-huge' %>
           </div>
-        </div>
-        <div class="listings-cards-container justify-content-start">
-          <div class="scroll-cards" style="background-color:#f6f6f4;">
-            <div class="row text-center" style='list-style:none;'>
-              <% @bookings.each do |booking| %>
-                <div class="card-col m-3">
-                  <% if booking.toilet.photo.url.nil? %>
-                    <%= link_to image_tag("http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg", alt: "alttext", class: "card-img-top"), booking_path(booking.id) %>
-                  <% else %>
-                    <%= link_to cl_image_tag(booking.toilet.photo.url, :width=>300, :height=>200, :crop=>"crop", alt: "alttext", class: "card-img-top"), booking_path(booking.id) %>
-                  <% end %>
-
-                  <div class="card-infos">
-                    <div class='d-flex flex-column justify-content-start align-items-start'>
-                      <h2><%= booking.toilet.name %></h2>
-                      <p><%= booking.toilet.address %></p>
-                    </div>
-                    <h2 class="card-pricing"><%= booking.check_in %></h2>
-                    <% if booking.toilet.user.photo.file.nil? %>
-                      <%= link_to image_tag("paper.png", alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(booking.toilet.user_id) %>
-                    <% else %>
-                      <%= link_to cl_image_tag(booking.toilet.user.photo, alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(booking.toilet.user_id) %>
-                    <% end %>
-                  </div>
-                </div>
-              <% end %>
-            </div>
+          <div class='border-bottom card-padding'>
+            <p>
+              number of reviews
+            </p>
           </div>
+          <div class='card-padding'>
+            <p>Joined in <%= @user.created_at %></p>
+            <p>other stuff here</p>
+          </div>
+          <%= link_to 'Edit Profile', '#', class:'btn btn-primary' %>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="poopspace-container d-flex">
-      <div class="listings">
-        <div class='d-flex justify-content-start mb-2'>
-          <h1>Here are your Listings!</h1>
-          <div class='d-flex align-items-center ml-2'>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listToilet" data-whatever="@mdo">List A Toilet</button>
-          </div>
-        </div>
-        <div class="listings-cards-container justify-content-start">
-          <div class="scroll-cards" style="background-color:#f6f6f4;">
-            <div class="row text-center" style='list-style:none;'>
-              <% @toilets.each do |toilet| %>
-                <div class="card-col m-3">
-                  <% if toilet.photo.url.nil? %>
-                    <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
-                  <% else %>
-                    <%= link_to cl_image_tag(toilet.photo.url, :width=>300, :height=>200, :crop=>"crop", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
-                  <% end %>
-
-                  <div class="card-infos">
-                    <div class='d-flex flex-column justify-content-start align-items-start'>
-                      <h2><%= link_to toilet.name, toilet_path(toilet) %></h2>
-                      <p><%= toilet.description %></p>
-                    </div>
-
-                    <h2 class="card-pricing">$<%= toilet.rate %> <span style='font-size:10px'>/min</span></h2>
-                    <% if toilet.user.photo.file.nil? %>
-                      <%= link_to image_tag("paper.png", alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
-                    <% else %>
-                      <%= link_to cl_image_tag(toilet.user.photo, alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
-                    <% end %>
-
-                    <h2 class='card-rating'>
-                      <% sum_rating = 0 %>
-                      <% num_rating = 0 %>
-                      <% average = 0 %>
-                      <% bookings = toilet.bookings %>
-                      <% bookings.each do |booking| %>
-                        <% if booking.reviews.nil? %>
-                          <% 0 %>
-                        <% else %>
-                          <% booking.reviews.each do |review| %>
-                            <% sum_rating += review.rating %>
-                            <% num_rating += 1 %>
-                          <% end %>
-                        <% end %>
+  <div class='d-flex justify-content-center'>
+    <div class="d-flex justify-content-between">
+      <div class='d-flex flex-column justify-content-between'>
+        <div class="poopspace-container d-flex border-bottom">
+          <div class="listings">
+            <div class='d-flex justify-content-start mb-2'>
+              <h1>Here are your Bookings!</h1>
+              <div class='d-flex align-items-center ml-2'>
+              </div>
+            </div>
+            <div class="listings-cards-container justify-content-start">
+              <div class="scroll-cards" style="background-color:#f6f6f4;">
+                <div class="row text-center" style='list-style:none;'>
+                  <% @bookings.each do |booking| %>
+                    <div class="card-col m-3">
+                      <% if booking.toilet.photo.url.nil? %>
+                        <%= link_to image_tag("http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg", alt: "alttext", class: "card-img-top"), booking_path(booking.id) %>
+                      <% else %>
+                        <%= link_to cl_image_tag(booking.toilet.photo.url, :width=>300, :height=>200, :crop=>"crop", alt: "alttext", class: "card-img-top"), booking_path(booking.id) %>
                       <% end %>
-                      <% average = (sum_rating / num_rating) if num_rating != 0%>
-                      <%= average %>/5
-                    </h2>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="poopspace-container d-flex border-bottom">
-      <div class="upcoming">
-        <div class='d-flex justify-content-start mb-2'>
-          <h1>Here are your Upcoming Guests!</h1>
-          <div class='d-flex align-items-center ml-2'>
-          </div>
-        </div>
-        <div class="listings-cards-container justify-content-start">
-          <div class="scroll-cards" style="background-color:#f6f6f4;">
-            <div class="row text-center" style='list-style:none;'>
-              <% @upcoming_bookings.each do |booking| %>
-                <div class="card-col m-3">
-                  <% if booking.toilet.photo.url.nil? %>
-                    <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(booking.toilet) %>
-                  <% else %>
-                    <%= link_to cl_image_tag(booking.toilet.photo.url, :width=>300, :height=>200, :crop=>"crop", alt: "alttext", class: "card-img-top"), toilet_path(booking.toilet)  %>
-                  <% end %>
-
-                  <div class="card-infos">
-                    <div class='d-flex flex-column justify-content-start align-items-start'>
-                      <h2><%= booking.toilet.name %></h2>
-                      <p><%= booking.toilet.address %></p>
-                      <p>$<%= booking.price %>
+                      <div class="card-infos">
+                        <div class='d-flex flex-column justify-content-start align-items-start'>
+                          <h2><%= booking.toilet.name %></h2>
+                          <p><%= booking.toilet.address %></p>
+                        </div>
+                        <h2 class="card-pricing"><%= booking.check_in %></h2>
+                        <% if booking.toilet.user.photo.file.nil? %>
+                          <%= link_to image_tag("paper.png", alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(booking.toilet.user_id) %>
+                        <% else %>
+                          <%= link_to cl_image_tag(booking.toilet.user.photo, alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(booking.toilet.user_id) %>
+                        <% end %>
+                      </div>
                     </div>
-
-                    <h2 class="card-pricing"><%= booking.check_in %></h2>
-
-                    <% if booking.toilet.user.photo.file.nil? %>
-                      <%= link_to image_tag("paper.png", alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(booking.toilet.user_id) %>
-                    <% else %>
-                      <%= link_to cl_image_tag(booking.user.photo, alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(booking.user_id) %>
-                    <% end %>
-                  </div>
+                  <% end %>
                 </div>
-              <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="poopspace-container d-flex">
+          <div class="listings">
+            <div class='d-flex justify-content-start mb-2'>
+              <h1>Here are your Listings!</h1>
+              <div class='d-flex align-items-center ml-2'>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listToilet" data-whatever="@mdo">List A Toilet</button>
+              </div>
+            </div>
+            <div class="listings-cards-container justify-content-start">
+              <div class="scroll-cards" style="background-color:#f6f6f4;">
+                <div class="row text-center" style='list-style:none;'>
+                  <% @toilets.each do |toilet| %>
+                    <div class="card-col m-3">
+                      <% if toilet.photo.url.nil? %>
+                        <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
+                      <% else %>
+                        <%= link_to cl_image_tag(toilet.photo.url, :width=>300, :height=>200, :crop=>"crop", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
+                      <% end %>
+
+                      <div class="card-infos">
+                        <div class='d-flex flex-column justify-content-start align-items-start'>
+                          <h2><%= link_to toilet.name, toilet_path(toilet) %></h2>
+                          <p><%= toilet.description %></p>
+                        </div>
+
+                        <h2 class="card-pricing">$<%= toilet.rate %> <span style='font-size:10px'>/min</span></h2>
+                        <% if toilet.user.photo.file.nil? %>
+                          <%= link_to image_tag("paper.png", alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
+                        <% else %>
+                          <%= link_to cl_image_tag(toilet.user.photo, alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
+                        <% end %>
+
+                        <h2 class='card-rating'>
+                          <% sum_rating = 0 %>
+                          <% num_rating = 0 %>
+                          <% average = 0 %>
+                          <% bookings = toilet.bookings %>
+                          <% bookings.each do |booking| %>
+                            <% if booking.reviews.nil? %>
+                              <% 0 %>
+                            <% else %>
+                              <% booking.reviews.each do |review| %>
+                                <% sum_rating += review.rating %>
+                                <% num_rating += 1 %>
+                              <% end %>
+                            <% end %>
+                          <% end %>
+                          <% average = (sum_rating / num_rating) if num_rating != 0%>
+                          <%= average %>/5
+                        </h2>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="poopspace-container d-flex border-bottom">
+          <div class="upcoming">
+            <div class='d-flex justify-content-start mb-2'>
+              <h1>Here are your Upcoming Guests!</h1>
+              <div class='d-flex align-items-center ml-2'>
+              </div>
+            </div>
+            <div class="listings-cards-container justify-content-start">
+              <div class="scroll-cards" style="background-color:#f6f6f4;">
+                <div class="row text-center" style='list-style:none;'>
+                  <% @upcoming_bookings.each do |booking| %>
+                    <div class="card-col m-3">
+                      <% if booking.toilet.photo.url.nil? %>
+                        <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(booking.toilet) %>
+                      <% else %>
+                        <%= link_to cl_image_tag(booking.toilet.photo.url, :width=>300, :height=>200, :crop=>"crop", alt: "alttext", class: "card-img-top"), toilet_path(booking.toilet)  %>
+                      <% end %>
+
+                      <div class="card-infos">
+                        <div class='d-flex flex-column justify-content-start align-items-start'>
+                          <h2><%= booking.toilet.name %></h2>
+                          <p><%= booking.toilet.address %></p>
+                          <p>$<%= booking.price %>
+                        </div>
+
+                        <h2 class="card-pricing"><%= booking.check_in %></h2>
+
+                        <% if booking.toilet.user.photo.file.nil? %>
+                          <%= link_to image_tag("paper.png", alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(booking.toilet.user_id) %>
+                        <% else %>
+                          <%= link_to cl_image_tag(booking.user.photo, alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(booking.user_id) %>
+                        <% end %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class='profile-container-super d-flex justify-content-center'>
-  <div class="profile-container" style="margin-top:20px;">
-    <div class='profile-card card-padding'>
-      <div class='profile-picture border-bottom'>
-        <%= cl_image_tag current_user.photo, class:'avatar-huge' %>
-      </div>
-      <div class='border-bottom card-padding'>
-        <p>
-          number of reviews
-        </p>
-      </div>
-      <div class='card-padding'>
-        <p>Joined in <%= @user.created_at %></p>
-        <p>other stuff here</p>
-      </div>
-      <%= link_to 'Edit Profile', '#', class:'btn btn-primary' %>
-    </div>
-  </div>
 </div>
 
 <div class="modal fade" id="listToilet" tabindex="-1" role="dialog" aria-labelledby="listToilet" aria-hidden="true">
