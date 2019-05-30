@@ -47,13 +47,6 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
             <%= average %>/5
           </h2>
         </div>
-
-        <h2 class="card-pricing">$<%= toilet.rate %> / min</h2>
-        <% if toilet.user.photo.file.nil? %>
-          <%= link_to image_tag("paper.png", alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
-        <% else %>
-          <%= link_to cl_image_tag(toilet.user.photo, alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
-        <% end %>
       </div>
     <% end %>
   </div>
