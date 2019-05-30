@@ -1,3 +1,4 @@
+<!-- header -->
 <div class="banner-poopspace d-flex justify-content-center">
   <div class='d-flex flex-column justify-content-center align-items-center'>
     <h1>Welcome <%= current_user.first_name %></h1>
@@ -5,9 +6,10 @@
   </div>
 </div>
 
-<div class='d-flex justify-content-center'>
+<div class='d-flex justify-content-center poopspace-master'>
+<!-- profile card -->
   <div>
-    <div class='profile-container-super d-flex justify-content-center'>
+    <div class='profile-container-super d-flex justify-content-center' style="margin-top: 56px;">
       <div class="profile-container" style="margin-top:20px;">
         <div class='profile-card card-padding'>
           <div class='profile-picture border-bottom'>
@@ -28,6 +30,7 @@
     </div>
   </div>
 
+<!-- the 3 scrolls -->
   <div class='d-flex justify-content-center'>
     <div class="d-flex justify-content-between">
       <div class='d-flex flex-column justify-content-between'>
@@ -129,7 +132,7 @@
         </div>
 
         <div class="poopspace-container d-flex border-bottom">
-          <div class="upcoming">
+          <div class="listings">
             <div class='d-flex justify-content-start mb-2'>
               <h1>Here are your Upcoming Guests!</h1>
               <div class='d-flex align-items-center ml-2'>
@@ -171,7 +174,6 @@
       </div>
     </div>
   </div>
-
 </div>
 
 <div class="modal fade" id="listToilet" tabindex="-1" role="dialog" aria-labelledby="listToilet" aria-hidden="true">
