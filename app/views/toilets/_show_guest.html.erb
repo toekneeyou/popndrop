@@ -5,7 +5,12 @@
 </div>
 
 <div class="d-flex">
-  <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg", alt: "alttext", style: "width:50vw; height: 40vw", class: "card-img-top"), toilet_path(@toilet)  %>
+  <% if  @toilet.photo.url.nil? %>
+    <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg", alt: "alttext", style: "width:50vw; height: 40vw", class: "card-img-top"), toilet_path(@toilet)  %>
+  <% else %>
+    <%= link_to image_tag(@toilet.photo.url, alt: "alttext", style: "width:50vw; height: 40vw", class: "card-img-top"), toilet_path(@toilet)  %>
+  <% end %>
+
   <div
     id="map"
   style="width: 50vw!important;
