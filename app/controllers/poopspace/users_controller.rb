@@ -5,9 +5,7 @@ class Poopspace::UsersController < ApplicationController
   end
 
   def show
-    @toilets = Toilet.select do |toilet|
-      toilet.user_id == current_user.id
-    end
+    @toilets = User.find(params[:id]).toilets
     @bookings = Booking.select do |booking|
       booking.user_id == current_user.id
     end
@@ -17,5 +15,7 @@ class Poopspace::UsersController < ApplicationController
     @upcoming_bookings = Booking.select do |booking|
     booking.toilet.user_id == current_user.id
     end
+
+    # raise
   end
 end
