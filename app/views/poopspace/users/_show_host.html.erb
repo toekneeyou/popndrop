@@ -5,49 +5,58 @@
   </div>
 </div>
 
-<div class="poopspace-container d-flex">
-  <div class="listings text-center">
-    <h1>Here are your Listings!</h1>
-    <div class="listings-cards-container justify-content-start">
-      <% @toilets.each do |toilet| %>
-        <div class="card-trip">
-          <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
-          <div class="card-trip-infos">
-            <div>
-              <h2><%= link_to toilet.name, toilet_path(toilet) %></h2>
-              <p><%= toilet.description %></p>
-            </div>
-            <h2 class="card-trip-pricing">$<%= toilet.rate %> / min</h2>
-            <%= link_to image_tag("https://kitt.lewagon.com/placeholder/users/ssaunier", alt: "alttext", class: "card-trip-user avatar-bordered"), "#" %>
-          </div>
+<div class='d-flex flex-column justify-content-between'>
+  <div class="poopspace-container d-flex border-bottom">
+    <div class="listings">
+      <div class='d-flex justify-content-start'>
+        <h1>Here are your Bookings!</h1>
+        <div class='d-flex align-items-center ml-2'>
         </div>
-      <% end %>
+      </div>
+      <div class="listings-cards-container justify-content-start">
+        <% @bookings.each do |booking| %>
+          <div class="card-trip">
+            <%= link_to image_tag("http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg", alt: "alttext", class: "card-img-top"), booking_path(booking.id) %>
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= booking.toilet.name %></h2>
+                <p><%= booking.toilet.address %></p>
+              </div>
+              <h2 class="card-trip-pricing"><%= booking.check_in %></h2>
+              <%= link_to image_tag("https://kitt.lewagon.com/placeholder/users/ssaunier", alt: "alttext", class: "card-trip-user avatar-bordered"), poopspace_user_path(booking.toilet.user_id) %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="poopspace-container d-flex">
+    <div class="listings">
+      <div class='d-flex justify-content-start'>
+        <h1>Here are your Listings!</h1>
+        <div class='d-flex align-items-center ml-2'>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listToilet" data-whatever="@mdo">List A Toilet</button>
+        </div>
+      </div>
+      <div class="listings-cards-container justify-content-start">
+        <% @toilets.each do |toilet| %>
+          <div class="card-trip">
+            <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= link_to toilet.name, toilet_path(toilet) %></h2>
+                <p><%= toilet.description %></p>
+              </div>
+              <h2 class="card-trip-pricing">$<%= toilet.rate %> / min</h2>
+              <%= link_to image_tag("https://kitt.lewagon.com/placeholder/users/ssaunier", alt: "alttext", class: "card-trip-user avatar-bordered"), "#" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 
-  <div class="bookings text-center">
-    <h1>Here are your Bookings!</h1>
-    <div class='booking-cards-container justify-content-start'>
-      <% @bookings.each do |booking| %>
-        <div class="card-trip">
-          <%= link_to image_tag("http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg", alt: "alttext", class: "card-img-top"), booking_path(booking.id) %>
-          <div class="card-trip-infos">
-            <div>
-              <h2><%= booking.toilet.name %></h2>
-              <p><%= booking.toilet.address %></p>
-            </div>
-            <h2 class="card-trip-pricing"><%= booking.check_in %></h2>
-            <%= link_to image_tag("https://kitt.lewagon.com/placeholder/users/ssaunier", alt: "alttext", class: "card-trip-user avatar-bordered"), poopspace_user_path(booking.toilet.user_id) %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
 </div>
-
-
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listToilet" data-whatever="@mdo">List A Toilet</button>
 
 <div class="modal fade" id="listToilet" tabindex="-1" role="dialog" aria-labelledby="listToilet" aria-hidden="true">
   <div class="modal-dialog" role="document">
