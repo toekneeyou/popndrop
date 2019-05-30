@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 2019_05_30_043716) do
     t.integer "price"
     t.bigint "toilet_id"
     t.bigint "user_id"
-    t.boolean "user_reviewed", default: false
-    t.boolean "host_reviewed", default: false
+    t.boolean "user_reviewed"
+    t.boolean "host_reviewed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["toilet_id"], name: "index_bookings_on_toilet_id"
