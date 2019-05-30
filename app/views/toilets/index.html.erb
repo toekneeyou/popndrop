@@ -1,57 +1,59 @@
-<div
-id="map"
-class="home-map"
-style="width: 100%;
-height: 50vh;"
-data-markers="<%= @markers.to_json %>"
-data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-></div>
+<div class="banner d-flex flex-column justify-content-between align-items-start" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://upload.wikimedia.org/wikipedia/commons/d/d6/Privy_at_Goat_Peak.jpg'); background-attachment:fixed;">
 
-<div class="scroll-cards" style="background-color:#f6f6f4;">
-  <div class="row text-center" style='list-style:none;'>
-    <% @toilets.each do |toilet| %>
-      <div class="card-col m-3">
-        <% if toilet.photo.url.nil? %>
-          <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
-        <% else %>
-          <%= link_to cl_image_tag(toilet.photo.url, :width=>300, :height=>200, :crop=>"crop", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
-        <% end %>
+  <div
+  id="map"
+  class="home-map"
+  style="width: 100%;
+  height: 50vh;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
 
-        <div class="card-infos">
-          <div class='d-flex flex-column justify-content-start align-items-start'>
-            <h2><%= link_to toilet.name, toilet_path(toilet) %></h2>
-            <p><i><%= toilet.address %></i></p>
-            <p><%= toilet.description %></p>
-          </div>
-
-          <h2 class="card-pricing">$<%= toilet.rate %> <span style='font-size:10px'>/min</span></h2>
-          <% if toilet.user.photo.file.nil? %>
-            <%= link_to image_tag("paper.png", alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
+  <div class="scroll-cards" style="background-color:rgba(255,255,255,.2);padding-left:10px;">
+    <div class="row text-center" style='list-style:none;'>
+      <% @toilets.each do |toilet| %>
+        <div class="card-col m-3">
+          <% if toilet.photo.url.nil? %>
+            <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
           <% else %>
-            <%= link_to cl_image_tag(toilet.user.photo, alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
+            <%= link_to cl_image_tag(toilet.photo.url, :width=>300, :height=>200, :crop=>"crop", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
           <% end %>
 
-          <h2 class='card-rating'>
-            <% sum_rating = 0 %>
-            <% num_rating = 0 %>
-            <% average = 0 %>
-            <% bookings = toilet.bookings %>
-            <% bookings.each do |booking| %>
-              <% if booking.reviews.nil? %>
-                <% 0 %>
-              <% else %>
-                <% booking.reviews.each do |review| %>
-                  <% sum_rating += review.rating %>
-                  <% num_rating += 1 %>
+          <div class="card-infos">
+            <div class='d-flex flex-column justify-content-start align-items-start'>
+              <h2><%= link_to toilet.name, toilet_path(toilet) %></h2>
+              <p><i><%= toilet.address %></i></p>
+              <p><%= toilet.description %></p>
+            </div>
+
+            <h2 class="card-pricing">$<%= toilet.rate %> <span style='font-size:10px'>/min</span></h2>
+            <% if toilet.user.photo.file.nil? %>
+              <%= link_to image_tag("paper.png", alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
+            <% else %>
+              <%= link_to cl_image_tag(toilet.user.photo, alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
+            <% end %>
+
+            <h2 class='card-rating'>
+              <% sum_rating = 0 %>
+              <% num_rating = 0 %>
+              <% average = 0 %>
+              <% bookings = toilet.bookings %>
+              <% bookings.each do |booking| %>
+                <% if booking.reviews.nil? %>
+                  <% 0 %>
+                <% else %>
+                  <% booking.reviews.each do |review| %>
+                    <% sum_rating += review.rating %>
+                    <% num_rating += 1 %>
+                  <% end %>
                 <% end %>
               <% end %>
-            <% end %>
-            <% average = (sum_rating / num_rating) if num_rating != 0%>
-            <%= average %>/5
-          </h2>
+              <% average = (sum_rating / num_rating) if num_rating != 0%>
+              <%= average %>/5
+            </h2>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
-
