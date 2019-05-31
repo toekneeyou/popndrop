@@ -3,7 +3,8 @@ class ToiletsController < ApplicationController
   before_action :set_toilet, only: [:show, :new, :edit, :update, :destroy]
 
   def index
-    @toilets = Toilet.where.not(latitude: nil, longitude: nil, user_id: current_user.id)
+    @toilets = Toilet.all if current_user.nil?
+    @toilets = Toilet.where.not(latitude: nil, longitude: nil, user_id: current_user.id) if current_user
     @markers = @toilets.map do |toilet|
       {
         lat: toilet.latitude,
