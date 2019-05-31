@@ -35,7 +35,7 @@
       </div>
       <br>
       <div class='booking-padding d-flex justify-content-center'>
-        <%= link_to 'Edit', toilet_path(params[:id]), method: :edit, class:'btn btn-light m-1' %>
+        <%= link_to 'Edit', edit_toilet_path(@toilet),  class:'btn btn-light m-1' %>
         <%= link_to 'Go Back', poopspace_user_path(current_user), class:'btn btn-light m-1' %>
         <%= link_to 'Delete', toilet_path(params[:id]), method: :delete, class:'btn btn-danger m-1' %>
       </div>
