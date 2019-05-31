@@ -6,16 +6,19 @@
   display: relative;
 }
 
+
+
 .booking-card {
   background-color: white;
   width: 620px;
-  height: 100vh;
+  padding-left: 10px;
+  padding-right: 10px;
   border-radius: 5px;
   box-shadow: 5px 10px 10px #888888;
   margin: 10px 10px;
-  img {
-    width:620px;
-    height: 400px;
+  .booking-img img {
+    width:550px;
+    height: 370px;
   }
   h3 {
     font-size: 18px;
