@@ -18,9 +18,10 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     if params.key? :booking_id
       @review.reviewable = @booking
+      @review.user_id = @booking.toilet.user_id
     else
       @review.reviewable = User.find(params[:user_id])
-      # @review.user = current_user
+      @review.user_id = params[:user_id]
     end
     if
       @review.save
