@@ -3,7 +3,7 @@
 <!-- header -->
 <div class="banner-poopspace d-flex justify-content-center">
   <div class='d-flex flex-column justify-content-center align-items-center'>
-    <h1>Welcome <%= current_user.first_name %></h1>
+    <h1>Welcome <%= current_user.first_name.capitalize %></h1>
     <h2>Your Poopspace is where you can manage all of your bodily needs!</h2>
   </div>
 </div>
@@ -43,7 +43,7 @@
         <div class="poopspace-container d-flex border-bottom">
           <div class="listings">
             <div class='d-flex justify-content-start mb-2'>
-              <h1>Here are your Bookings!</h1>
+              <h1>Bookings</h1>
               <div class='d-flex align-items-center ml-2'>
               </div>
             </div>
@@ -81,7 +81,7 @@
         <div class="poopspace-container d-flex">
           <div class="listings">
             <div class='d-flex justify-content-start mb-2'>
-              <h1>Here are your Listings!</h1>
+              <h1>Listings</h1>
               <div class='d-flex align-items-center ml-2'>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#listToilet" data-whatever="@mdo">List A Toilet</button>
               </div>
@@ -140,7 +140,7 @@
         <div class="poopspace-container d-flex border-bottom" style="margin-bottom:75px;">
           <div class="listings">
             <div class='d-flex justify-content-start mb-2'>
-              <h1>Here are your Upcoming Guests!</h1>
+              <h1>Upcoming Guests</h1>
               <div class='d-flex align-items-center ml-2'>
               </div>
             </div>

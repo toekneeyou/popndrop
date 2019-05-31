@@ -1,20 +1,20 @@
 .banner-poopspace {
   margin: 0;
-  color: #575757;
+  color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 44px;
   padding: 30px 30px;
   font-weight: bold;
   h1 {
   margin: 0;
-  color: #575757;
+  color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 44px;
   font-weight: bold;
   }
   h2 {
   font-size: 20px;
-  color: #575757;
+  color: white;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   }
@@ -24,6 +24,9 @@
   padding: 20px;
   h1 {
     margin: 0 0 0 10px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    color: white;
+    font-size: 36px;
   }
 }
 
@@ -43,7 +46,6 @@ header {
 
 .listings {
   width: 800px;
-  color: #575757;
   font-weight: bold;
 }
 
