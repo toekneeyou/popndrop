@@ -42,7 +42,7 @@
       <%= link_to 'Cancel Reservation', booking_path(params[:id]), method: :delete, class:'btn btn-danger' %>
     </div>
   </div>
-  <div id="map" style="width: 100vw;height: 100vh;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div id="map" class="map" style="width: 100vw;height: 100vh;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
 

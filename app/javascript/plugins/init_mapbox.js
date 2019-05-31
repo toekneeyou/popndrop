@@ -55,7 +55,7 @@ const initMapbox = (initCoord) => {
     }
 
     map.on('load', function () {
-    if(document.querySelector('#map')) {
+    if(document.querySelector('.map')) {
     // Start the animation.
     rotateCamera(0);
     }
