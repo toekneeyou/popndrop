@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-start">
   <div class='booking-container d-flex justify-content-between'>
     <!-- contains booking-card and booking-map -->
-    <div class='booking-card'>
+    <div class='booking-card' style="margin: 0px 10px;">
       <h1 class='booking-padding'>
         <%= @toilet.name %>
       </h1>
@@ -44,6 +44,6 @@
 
 
 
-  <div id="map" class="map" style="width: 100vw;height: 100vh;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div id="map" class="map" style="width: 100vw;height: 100vh; border-radius: 5px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
