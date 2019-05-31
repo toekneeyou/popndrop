@@ -18,10 +18,11 @@
             <%= cl_image_tag current_user.photo, class:'avatar-huge' %>
           </div>
 
-          <div class='border-bottom card-padding'>
-            <span>
+          <div class='border-bottom card-padding d-flex justify-content-between'>
+            <span class='d-flex align-items-center'>
               <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>
             </span>
+            <%= link_to 'Edit', edit_user_path(current_user), class:'btn btn-primary' %>
           </div>
 
           <div class='border-bottom card-padding'>
@@ -37,7 +38,7 @@
             <span>Joined in <b><%= @user.created_at.to_s.match(/^\d+/) %></b>
             </span>
           </div>
-          <%= link_to 'Edit Profile', '#', class:'btn btn-primary' %>
+          <%= link_to 'Account Settings', edit_user_registration_path(current_user), class:'btn btn-primary' %>
         </div>
       </div>
     </div>
