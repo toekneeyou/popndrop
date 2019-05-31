@@ -37,7 +37,7 @@ const initMapbox = (initCoord) => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/tylermcwilliam/cjw8rcrwg14np1cl6wm6pzumk',
+      style: 'mapbox://styles/tylermcwilliam/cjwbk2kd009071cocftx1m4s4/',
       pitch: 55,
       bearing: 0,
       zoom: 10,
@@ -55,44 +55,36 @@ const initMapbox = (initCoord) => {
     }
 
     map.on('load', function () {
-    if(document.querySelector('.map')) {
-    // Start the animation.
-    rotateCamera(0);
-    }
-    // Add 3d buildings and remove label layers to enhance the map
-    var layers = map.getStyle().layers;
-    for (var i = 0; i < layers.length; i++) {
-    if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
-    // remove text labels
-    map.removeLayer(layers[i].id);
-    }
-    }
+      if(document.querySelector('.map')) {
+        // Start the animation.
+        rotateCamera(0);
+      }
+    // Add 3d buildings
+      map.addLayer({
+        'id': '3d-buildings',
+        'source': 'composite',
+        'source-layer': 'building',
+        'filter': ['==', 'extrude', 'true'],
+        'type': 'fill-extrusion',
+        'minzoom': 15,
+        'paint': {
+        'fill-extrusion-color': '#aaa',
 
-    map.addLayer({
-    'id': '3d-buildings',
-    'source': 'composite',
-    'source-layer': 'building',
-    'filter': ['==', 'extrude', 'true'],
-    'type': 'fill-extrusion',
-    'minzoom': 15,
-    'paint': {
-    'fill-extrusion-color': '#aaa',
-
-    // use an 'interpolate' expression to add a smooth transition effect to the
-    // buildings as the user zooms in
-    'fill-extrusion-height': [
-    "interpolate", ["linear"], ["zoom"],
-    15, 0,
-    15.05, ["get", "height"]
-    ],
-    'fill-extrusion-base': [
-    "interpolate", ["linear"], ["zoom"],
-    15, 0,
-    15.05, ["get", "min_height"]
-    ],
-    'fill-extrusion-opacity': .6
-    }
-    });
+        // use an 'interpolate' expression to add a smooth transition effect to the
+        // buildings as the user zooms in
+        'fill-extrusion-height': [
+        "interpolate", ["linear"], ["zoom"],
+        15, 0,
+        15.05, ["get", "height"]
+        ],
+        'fill-extrusion-base': [
+        "interpolate", ["linear"], ["zoom"],
+        15, 0,
+        15.05, ["get", "min_height"]
+        ],
+        'fill-extrusion-opacity': .6
+        }
+      });
     })
     const markers = JSON.parse(mapElement.dataset.markers);
 
