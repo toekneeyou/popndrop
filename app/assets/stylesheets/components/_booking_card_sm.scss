@@ -4,6 +4,13 @@
   }
 }
 
+.booking-card > img {
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
+}
+
+
 .booking-card-sm {
   width: 400px;
   height: 350px;
