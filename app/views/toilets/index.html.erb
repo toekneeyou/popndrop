@@ -9,10 +9,10 @@
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div>
 
-  <div class="scroll-cards" style="background-color:rgba(255,255,255,.2);padding-left:10px;">
+  <div class="scroll-cards" style="background-color:rgba(255,255,255,.2);padding-left:10px; margin-bottom:75px;">
     <div class="row text-center" style='list-style:none;'>
       <% @toilets.each do |toilet| %>
-        <div class="card-col m-3">
+        <div class="card-col ml-3">
           <% if toilet.photo.url.nil? %>
             <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
           <% else %>
