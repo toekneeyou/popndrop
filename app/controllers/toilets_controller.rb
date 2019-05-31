@@ -10,7 +10,8 @@ class ToiletsController < ApplicationController
         lat: toilet.latitude,
         lng: toilet.longitude,
         infoWindow: render_to_string(partial: "infowindow", locals: { toilet: toilet }),
-        image_url: helpers.asset_url('dancing-paper.gif')
+        image_url: helpers.asset_url('dancing-paper.gif'),
+        text: toilet.name
       }
     end
   end
