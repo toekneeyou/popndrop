@@ -27,8 +27,8 @@
             </span>
           </div>
           <div class='card-padding'>
-            <p>Joined in <%= @user.created_at %></p>
-            <p>other stuff here</p>
+            <span>Joined in <%= @user.created_at.to_s.match(/^\d+/) %>
+            </span>
           </div>
           <%= link_to 'Edit Profile', '#', class:'btn btn-primary' %>
         </div>
