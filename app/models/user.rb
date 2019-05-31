@@ -6,10 +6,12 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :encrypted_password, presence: true
 
-  has_many :bookings
-  has_many :reviews
-  has_many :toilets
+  has_many :bookings, dependent: :destroy
+  has_many :toilets, dependent: :destroy
   has_many :reviews, as: :reviewable
+  has_many :reviews, dependent: :destroy
+  # has_many :photos, dependent: :destroy
+  # has_many :photo_caches, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
