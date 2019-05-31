@@ -27,6 +27,11 @@
             <h2><i><%= @toilet.address %></i></h2>
             <br>
             <p><%= @toilet.description %></p>
+            <br>
+            <h2>Reviews for <%= @toilet.name %>:</h2>
+            <% Review.all.each do |review| %>
+              <p>"<%= review.content if review.toilet.id == @toilet.id %>""<p>
+            <% end %>
           </div>
           <div>
             <% if @toilet.user.photo.file.nil? %>
