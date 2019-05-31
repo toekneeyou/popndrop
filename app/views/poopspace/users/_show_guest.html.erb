@@ -48,8 +48,19 @@
       </div>
     </div>
   </div>
-</div>
-
+  <div class='reviews-countainer'>
+    <div class='user-review'>
+      <ul>
+        <% current_user.reviews.each do |review| %>
+          <li>
+            <% review.content %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class='booking-review'>
+    </div>
+  </div>
 </div>
 
 
