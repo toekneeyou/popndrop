@@ -1,9 +1,12 @@
+<div class="banner d-flex flex-column justify-content-between" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(https://image.redbull.com/rbcom/010/2015-05-07/1331721593940_2/0010/1/2050/1367/1/a-remote-outhouse-in-the-cascade-mountains-in-washington-state-usa.jpg); background-attachment:fixed;">
+
+
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div class="form-inputs mx-auto text-white" style="width:240px; background-color:rgba(0,0,0,.5); padding: 20px;">
     <%= f.input :email, required: true, autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -33,3 +36,5 @@
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+
+</div>
