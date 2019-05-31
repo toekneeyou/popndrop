@@ -17,6 +17,8 @@ const initMapbox = (initCoord) => {
       element.style.backgroundSize = 'contain';
       element.style.width = '100px';
       element.style.height = '100px';
+      element.addEventListener('mouseenter', () => element.style.backgroundImage = "url(https://thumbs.gfycat.com/GiantObviousJanenschia-max-1mb.gif)");
+      element.addEventListener('mouseleave', () => element.style.backgroundImage = `url('${marker.image_url}')`);
 
       // Pass the element as an argument to the new marker
       new mapboxgl.Marker(element)
