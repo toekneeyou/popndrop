@@ -23,16 +23,6 @@
         <p><%= @toilet.rate %></p>
       </div>
 
-      <div class='booking-cost border-bottom booking-padding'>
-        <h3>Who's coming next?</h3>
-        <% @toilet.bookings.each do |booking| %>
-          <%= booking %>
-          <div class='booking-padding'>
-            <h2>Guest Name</h2>
-            <h3>Guest Rating</h3>
-          </div>
-        <% end %>
-      </div>
       <br>
       <div class='booking-padding d-flex justify-content-center'>
         <%= link_to 'Edit', edit_toilet_path(@toilet),  class:'btn btn-light m-1' %>
