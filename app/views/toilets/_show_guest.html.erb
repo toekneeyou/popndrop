@@ -35,7 +35,7 @@
             <% else %>
               <%= link_to cl_image_tag(@toilet.user.photo, alt: "avatar", class: "card-user avatar-bordered", style: "right: 75px; top: 25px; width: 200px; height: 200px;"), poopspace_user_path(@toilet.user_id) %>
             <% end %>
-            <div style="top: 200px; position: absolute; right: 100px; text-align: center;">
+            <div style="top: 230px; position: absolute; right: 115px; text-align: center;">
               <h2>Hosted by <%= @toilet.user.first_name %></h2>
               <p><i>(<%= @toilet.user.reviews.count %> reviews.)</i></p>
             </div>
