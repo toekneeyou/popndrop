@@ -1,3 +1,5 @@
+<div class="banner d-flex flex-column justify-content-between" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(https://upload.wikimedia.org/wikipedia/commons/f/f6/Mint_Hut_outhouse._Talkeetna_Mountains%2C_Alaska_%2830739423892%29.jpg); background-attachment:fixed;">
+
 <!-- header -->
 <div class="banner-poopspace d-flex justify-content-center">
   <div class='d-flex flex-column justify-content-center align-items-center'>
@@ -16,9 +18,13 @@
             <%= cl_image_tag current_user.photo, class:'avatar-huge' %>
           </div>
           <div class='border-bottom card-padding'>
-            <p>
-              number of reviews
-            </p>
+            <span>
+              <% review_count = 0 %>
+              <% @bookings.each do |booking| %>
+                <% review_count += booking.reviews.length %>
+              <% end %>
+              <%= @user.reviews.length + review_count %> Reviews
+            </span>
           </div>
           <div class='card-padding'>
             <p>Joined in <%= @user.created_at %></p>
@@ -198,6 +204,7 @@
       </div>
     </div>
   </div>
+
 </div>
 
 
