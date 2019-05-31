@@ -17,6 +17,8 @@ const initMapbox = (initCoord) => {
       element.style.backgroundSize = 'contain';
       element.style.width = '100px';
       element.style.height = '100px';
+      element.addEventListener('mouseenter', () => element.style.backgroundImage = "url(https://thumbs.gfycat.com/GiantObviousJanenschia-max-1mb.gif)");
+      element.addEventListener('mouseleave', () => element.style.backgroundImage = `url('${marker.image_url}')`);
 
       // Pass the element as an argument to the new marker
       new mapboxgl.Marker(element)
@@ -47,50 +49,51 @@ const initMapbox = (initCoord) => {
     function rotateCamera(timestamp) {
       // clamp the rotation between 0 -360 degrees
       // Divide timestamp by 100 to slow rotation to ~10 degrees / sec
-      map.rotateTo((timestamp / 100) % 360, {duration: 0});
+      map.rotateTo((timestamp / 200) % 360, {duration: 0});
       // Request the next frame of the animation.
       requestAnimationFrame(rotateCamera);
-      }
+    }
 
-      map.on('load', function () {
-      // Start the animation.
-      rotateCamera(0);
+    map.on('load', function () {
+    if(document.querySelector('.map')) {
+    // Start the animation.
+    rotateCamera(0);
+    }
+    // Add 3d buildings and remove label layers to enhance the map
+    var layers = map.getStyle().layers;
+    for (var i = 0; i < layers.length; i++) {
+    if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+    // remove text labels
+    map.removeLayer(layers[i].id);
+    }
+    }
 
-      // Add 3d buildings and remove label layers to enhance the map
-      var layers = map.getStyle().layers;
-      for (var i = 0; i < layers.length; i++) {
-      if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
-      // remove text labels
-      map.removeLayer(layers[i].id);
-      }
-      }
+    map.addLayer({
+    'id': '3d-buildings',
+    'source': 'composite',
+    'source-layer': 'building',
+    'filter': ['==', 'extrude', 'true'],
+    'type': 'fill-extrusion',
+    'minzoom': 15,
+    'paint': {
+    'fill-extrusion-color': '#aaa',
 
-      map.addLayer({
-      'id': '3d-buildings',
-      'source': 'composite',
-      'source-layer': 'building',
-      'filter': ['==', 'extrude', 'true'],
-      'type': 'fill-extrusion',
-      'minzoom': 15,
-      'paint': {
-      'fill-extrusion-color': '#aaa',
-
-      // use an 'interpolate' expression to add a smooth transition effect to the
-      // buildings as the user zooms in
-      'fill-extrusion-height': [
-      "interpolate", ["linear"], ["zoom"],
-      15, 0,
-      15.05, ["get", "height"]
-      ],
-      'fill-extrusion-base': [
-      "interpolate", ["linear"], ["zoom"],
-      15, 0,
-      15.05, ["get", "min_height"]
-      ],
-      'fill-extrusion-opacity': .6
-      }
-      });
-      })
+    // use an 'interpolate' expression to add a smooth transition effect to the
+    // buildings as the user zooms in
+    'fill-extrusion-height': [
+    "interpolate", ["linear"], ["zoom"],
+    15, 0,
+    15.05, ["get", "height"]
+    ],
+    'fill-extrusion-base': [
+    "interpolate", ["linear"], ["zoom"],
+    15, 0,
+    15.05, ["get", "min_height"]
+    ],
+    'fill-extrusion-opacity': .6
+    }
+    });
+    })
     const markers = JSON.parse(mapElement.dataset.markers);
 
     if(document.querySelector('.home-map')) {
@@ -98,11 +101,12 @@ const initMapbox = (initCoord) => {
       const fitbox = [initCoord]
       fitMapToMarkers(map, fitbox)
       addMarkersToMap(map, markers);
+      map.addControl(new mapboxgl.NavigationControl());
     } else {
       addMarkersToMap(map, markers)
       fitMapToMarkers(map, markers);
     }
-    map.addControl(new mapboxgl.NavigationControl());
+
     map.scrollZoom.disable();
   }
 };
