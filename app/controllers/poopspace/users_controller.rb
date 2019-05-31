@@ -12,10 +12,15 @@ class Poopspace::UsersController < ApplicationController
 
     @toilet = Toilet.new
     @user = User.find(params[:id])
+    @reviews = Review.where(reviewable: @user)
+
     @upcoming_bookings = Booking.select do |booking|
     booking.toilet.user_id == current_user.id
-    end
 
-    # raise
+    end
+    @review_count = @user.bookings.reduce(0) do |sum, booking|
+      sum += booking.reviews.count unless booking.reviews.empty?
+      sum
+    end
   end
 end
