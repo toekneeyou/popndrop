@@ -15,8 +15,8 @@
           </span>
         </div>
         <div class='card-padding'>
-          <p>Joined in </p>
-          <p>user location. Maybe we can pull toilet location instead</p>
+          <span>Joined in <%= @user.created_at.to_s.match(/^\d+/) %>
+          </span>
         </div>
       </div>
     </div>
