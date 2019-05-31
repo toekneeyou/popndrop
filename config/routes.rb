@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :bookings, only: [:new, :create]
   end
 
+  post '/toilets/:id' => 'toilets#edit'
+
   resources :bookings, only: [:index, :show, :destroy, :update] do
       resources :reviews, only: [:new, :create]
   end
