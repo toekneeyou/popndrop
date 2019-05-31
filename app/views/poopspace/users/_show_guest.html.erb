@@ -6,9 +6,13 @@
           <%= cl_image_tag @user.photo.url, class:'avatar-huge' %>
         </div>
         <div class='border-bottom card-padding'>
-          <p>
-            number of reviews
-          </p>
+          <span>
+            <% review_count = 0 %>
+            <% @bookings.each do |booking| %>
+              <% review_count += booking.reviews.length %>
+            <% end %>
+            <%= @user.reviews.length + review_count %> Reviews
+          </span>
         </div>
         <div class='card-padding'>
           <p>Joined in <%= @user.created_at %></p>
