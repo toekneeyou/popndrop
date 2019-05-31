@@ -1,37 +1,55 @@
-<div class="banner-show">
-  <div>
-    <h1>Awesome! Book "<%= @toilet.name %>" now! </h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://upload.wikimedia.org/wikipedia/commons/d/d6/Privy_at_Goat_Peak.jpg'); background-attachment:fixed; padding: 0px; margin: 0px;">
+
+  <div class="banner-show">
+      <h1 style="color: white;">Awesome! Book "<%= @toilet.name %>" now! </h1>
   </div>
-</div>
 
-<div class="d-flex">
-  <% if  @toilet.photo.url.nil? %>
-    <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg", alt: "alttext", style: "width:50vw; height: 40vw", class: "card-img-top"), toilet_path(@toilet)  %>
-  <% else %>
-    <%= link_to image_tag(@toilet.photo.url, alt: "alttext", style: "width:50vw; height: 40vw", class: "card-img-top"), toilet_path(@toilet)  %>
-  <% end %>
-
-  <div
-    id="map" class="map"
-  style="width: 50vw!important;
-  height: 40vw;"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  ></div>
-</div>
-<br>
-<br>
-<div class="d-flex justify-content-between" style="width: 100vw;">
-  <div class="card-trip m-3" style="width: 60vw;">
-    <div class="card-trip-infos">
-      <div>
-        <h2><%= @toilet.name %></h2>
-        <p><%= @toilet.description %></p>
-        <p><%= @toilet.address %></p>
+  <div>
+    <div class="d-flex">
+      <% if  @toilet.photo.url.nil? %>
+        <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg", alt: "alttext", style: "width:50vw; height: 40vw", class: "card-img-top"), toilet_path(@toilet)  %>
+      <% else %>
+        <%= link_to image_tag(@toilet.photo.url, alt: "alttext", style: "width:50vw; height: 40vw", class: "card-img-top"), toilet_path(@toilet)  %>
+      <% end %>
+      <div
+        id="map" class="map"
+      style="width: 50vw!important;
+      height: 40vw;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
+    </div>
+    <div class="d-flex justify-content-around" style="width: 100vw;">
+      <div class="card-col m-3" style="width: 100%;">
+        <div class="card-infos">
+          <div>
+            <h1 style="margin-top: 0;"><%= @toilet.name %></h1>
+            <h2><i><%= @toilet.address %></i></h2>
+            <br>
+            <p><%= @toilet.description %></p>
+            <br>
+            <h2>Reviews for <%= @toilet.name %>:</h2>
+            <% Review.all.each do |review| %>
+              <p>"<%= review.content if review.toilet.id == @toilet.id %>""<p>
+            <% end %>
+          </div>
+          <div>
+            <% if @toilet.user.photo.file.nil? %>
+              <%= link_to image_tag("paper.png", alt: "avatar", class: "card-user avatar-bordered", style: "right: 75px; top: 25px; width: 150px; height: 150px;"), poopspace_user_path(@toilet.user_id) %>
+            <% else %>
+              <%= link_to cl_image_tag(@toilet.user.photo, alt: "avatar", class: "card-user avatar-bordered", style: "right: 75px; top: 25px; width: 200px; height: 200px;"), poopspace_user_path(@toilet.user_id) %>
+            <% end %>
+            <div style="top: 200px; position: absolute; right: 100px; text-align: center;">
+              <h2>Hosted by <%= @toilet.user.first_name %></h2>
+              <p><i>(<%= @toilet.user.reviews.count %> reviews.)</i></p>
+            </div>
+          </div>
+        </div>
       </div>
-      <h2 class="card-trip-pricing">$<%= @toilet.rate %> / min</h2>
-
+      <div>
+        <%= render '/shared/booking_form' %>
+      </div>
     </div>
   </div>
-  <%= render '/shared/booking_form' %>
 </div>
+
