@@ -2,7 +2,7 @@
   <!-- contains booking-card and booking-map -->
   <div class='booking-card' style='margin: 0px 10px;'>
     <h1 class='booking-padding'>
-      Getting ready for relief at <%= @toilet.name %>!
+      Get ready for relief at <%= @toilet.name %>!
     </h1>
     <% if @toilet.photo.url.nil? %>
       <div class="booking-img">
@@ -10,7 +10,7 @@
       </div>
     <% else %>
       <div class="booking-img">
-        <img src="<%= @toilet.photo.url %>" >    
+        <img src="<%= @toilet.photo.url %>" >
       </div>
     <% end %>
     <div class='booking-time border-bottom d-flex justify-content-between booking-padding'>
@@ -30,7 +30,7 @@
         <p>Hosted by <%= @host.first_name %></p>
       </div>
       <div class="booking-owner-photo">
-        <%= cl_image_tag @booking.user.photo, height: 40 %>  
+        <%= cl_image_tag @booking.user.photo, height: 40 %>
       </div>
 
 
