@@ -13,6 +13,7 @@ class User < ApplicationRecord
   # has_many :photos, dependent: :destroy
   # has_many :photo_caches, dependent: :destroy
 
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]

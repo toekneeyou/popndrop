@@ -1,1 +1,42 @@
-edit.html.erb
+<div class="d-flex justify-content-around">
+  <div class='booking-card'>
+    <h1 class='booking-padding'>
+      <%= @toilet.name %>
+    </h1>
+    <% if @toilet.photo.url.nil? %>
+      <img src="http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg">
+    <% else %>
+      <img src="<%= @toilet.photo.url %>">
+    <% end %>
+    <div class='booking-time border-bottom d-flex justify-content-between booking-padding'>
+      <div class='booking-checkin'>
+        <h3><%= @toilet.name %></h3>
+      </div>
+    </div>
+    <div class='booking-cost border-bottom booking-padding'>
+      <p><%= @toilet.description %></p>
+    </div>
+    <div class='booking-cost border-bottom booking-padding'>
+      <p><%= @toilet.address %></p>
+    </div>
+    <div class='booking-cost border-bottom booking-padding'>
+      <h3>Current Rate</h3>
+      <p>$<%= @toilet.rate %>/minute</p>
+    </div>
+    <div class='booking-cost border-bottom booking-padding'>
+      <%= link_to 'Go Back', poopspace_user_path(current_user), class:'btn btn-light m-1' %>
+    </div>
+
+  </div>
+  <div class="booking-card p-4">
+    <%= simple_form_for [@toilet] do |f| %>
+    <%= f.input :name, maxlength: 20, placeholder: 'Comfort Room', opacity: 3%>
+    <%= f.input :description, placeholder: "World's Best Throne"%>
+    <%= f.input :address, placeholder: '20 W 34th St, New York, NY 10001, USA'%>
+    <%= f.input :rate, label: 'Cost per minute', placeholder: '$1' %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.button :submit, 'Update Toilet', class: 'btn btn-primary'%>
+    <% end %>
+  </div>
+</div>

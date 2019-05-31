@@ -17,14 +17,13 @@ class ReviewsController < ApplicationController
     @booking = Booking.find(params[:booking_id]) if params.key? :booking_id
     @review = Review.new(review_params)
     if params.key? :booking_id
-    raise
       @review.reviewable = @booking
     else
       @review.reviewable = User.find(params[:user_id])
     end
-    @review.user = current_user
-    if
-      @review.save
+    @review.user_id = current_user.id
+
+    if @review.save
       if params.key? :booking_id
         redirect_to booking_path(@booking)
       else

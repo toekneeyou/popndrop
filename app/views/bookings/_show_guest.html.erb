@@ -5,9 +5,13 @@
       Getting ready for relief at <%= @toilet.name %>!
     </h1>
     <% if @toilet.photo.url.nil? %>
-      <img src="http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg">
+      <div class="booking-img">
+        <img src="http://luxurylaunches.com/wp-content/uploads/2016/09/18-carat-gold-toilet-Guggenheim-Museum-1170x658.jpg">
+      </div>
     <% else %>
-      <img src="<%= @toilet.photo.url %>">
+      <div class="booking-img">
+        <img src="<%= @toilet.photo.url %>" >    
+      </div>
     <% end %>
     <div class='booking-time border-bottom d-flex justify-content-between booking-padding'>
       <div class='booking-checkin'>
@@ -25,7 +29,11 @@
         <h3><%= @toilet.name %></h3>
         <p>Hosted by <%= @host.first_name %></p>
       </div>
-      <h3>avatar</h3>
+      <div class="booking-owner-photo">
+        <%= cl_image_tag @booking.user.photo, height: 40 %>  
+      </div>
+
+
     </div>
 
     <div class='booking-address border-bottom booking-padding'>
@@ -38,13 +46,15 @@
       <p>$<%= @booking.price %></p>
     </div>
 
+    <%= render 'shared/review_form', object: @booking %>
+
     <div class='booking-padding d-flex justify-content-center'>
       <%= link_to 'Cancel Reservation', booking_path(params[:id]), method: :delete, class:'btn btn-danger' %>
     </div>
   </div>
-  <div id="map" class="map" style="width: 100vw;height: 100vh; border-radius: 5px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+
+  <div id="map" class="map" style="width: 100vw;height: 100vh; border-radius: 5px; position:sticky; top:0; margin-top: 10px" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>
 
-<%= render 'shared/review_form', object: @booking %>
 
