@@ -68,5 +68,14 @@ header {
 }
 
 
+.paper-review {
+  color:orange;
+  animation: glow 3s infinite;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
 
-
+@keyframes glow {
+ from {color: red}
+ to {color: orange}
+}
