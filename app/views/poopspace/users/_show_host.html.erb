@@ -40,6 +40,47 @@
   <div class='d-flex justify-content-center'>
     <div class="d-flex justify-content-between">
       <div class='d-flex flex-column justify-content-between'>
+
+        <div class="poopspace-container d-flex border-bottom">
+          <div class="listings">
+            <div class='d-flex justify-content-start mb-2'>
+              <h1>Upcoming Guests</h1>
+              <div class='d-flex align-items-center ml-2'>
+              </div>
+            </div>
+            <div class="listings-cards-container justify-content-start">
+              <div class="scroll-cards" style="background-color:rgba(255,255,255,.2);padding-left:10px; margin-bottom:75px;"">
+                <div class="row text-center" style='list-style:none;'>
+                  <% @upcoming_bookings.each do |booking| %>
+                    <div class="card-col m-3">
+                      <% if booking.toilet.photo.url.nil? %>
+                        <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(booking.toilet) %>
+                      <% else %>
+                        <%= link_to cl_image_tag(booking.toilet.photo.url, :width=>300, :height=>200, :crop=>"crop", alt: "alttext", class: "card-img-top"), toilet_path(booking.toilet)  %>
+                      <% end %>
+
+                      <div class="card-infos">
+                        <div class='d-flex flex-column justify-content-start align-items-start'>
+                          <h2><%= booking.toilet.name %></h2>
+                          <p><%= booking.toilet.address %></p>
+                          <p>$<%= booking.price %>
+                        </div>
+
+                        <h2 class="card-pricing"><%= booking.check_in %></h2>
+
+                        <% if booking.toilet.user.photo.file.nil? %>
+                          <%= link_to image_tag("paper.png", alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(booking.toilet.user_id) %>
+                        <% else %>
+                          <%= link_to cl_image_tag(booking.user.photo, alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(booking.user_id) %>
+                        <% end %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="poopspace-container d-flex border-bottom">
           <div class="listings">
             <div class='d-flex justify-content-start mb-2'>
@@ -48,7 +89,7 @@
               </div>
             </div>
             <div class="listings-cards-container justify-content-start">
-              <div class="scroll-cards" style="background-color:#f6f6f4;">
+              <div class="scroll-cards" style="background-color:rgba(255,255,255,.2);padding-left:10px; margin-bottom:75px;">
                 <div class="row text-center" style='list-style:none;'>
                   <% @bookings.each do |booking| %>
                     <div class="card-col m-3">
@@ -78,7 +119,7 @@
           </div>
         </div>
 
-        <div class="poopspace-container d-flex">
+        <div class="poopspace-container d-flex" style="margin-bottom:75px;">
           <div class="listings">
             <div class='d-flex justify-content-start mb-2'>
               <h1>Listings</h1>
@@ -87,7 +128,7 @@
               </div>
             </div>
             <div class="listings-cards-container justify-content-start">
-              <div class="scroll-cards" style="background-color:#f6f6f4;">
+              <div class="scroll-cards" style="background-color:rgba(255,255,255,.2);padding-left:10px; margin-bottom:75px;">
                 <div class="row text-center" style='list-style:none;'>
                   <% @toilets.each do |toilet| %>
                     <div class="card-col m-3">
@@ -137,46 +178,6 @@
           </div>
         </div>
 
-        <div class="poopspace-container d-flex border-bottom" style="margin-bottom:75px;">
-          <div class="listings">
-            <div class='d-flex justify-content-start mb-2'>
-              <h1>Upcoming Guests</h1>
-              <div class='d-flex align-items-center ml-2'>
-              </div>
-            </div>
-            <div class="listings-cards-container justify-content-start">
-              <div class="scroll-cards" style="background-color:#f6f6f4;">
-                <div class="row text-center" style='list-style:none;'>
-                  <% @upcoming_bookings.each do |booking| %>
-                    <div class="card-col m-3">
-                      <% if booking.toilet.photo.url.nil? %>
-                        <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(booking.toilet) %>
-                      <% else %>
-                        <%= link_to cl_image_tag(booking.toilet.photo.url, :width=>300, :height=>200, :crop=>"crop", alt: "alttext", class: "card-img-top"), toilet_path(booking.toilet)  %>
-                      <% end %>
-
-                      <div class="card-infos">
-                        <div class='d-flex flex-column justify-content-start align-items-start'>
-                          <h2><%= booking.toilet.name %></h2>
-                          <p><%= booking.toilet.address %></p>
-                          <p>$<%= booking.price %>
-                        </div>
-
-                        <h2 class="card-pricing"><%= booking.check_in %></h2>
-
-                        <% if booking.toilet.user.photo.file.nil? %>
-                          <%= link_to image_tag("paper.png", alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(booking.toilet.user_id) %>
-                        <% else %>
-                          <%= link_to cl_image_tag(booking.user.photo, alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(booking.user_id) %>
-                        <% end %>
-                      </div>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
