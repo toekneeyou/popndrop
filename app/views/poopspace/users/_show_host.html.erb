@@ -17,17 +17,24 @@
           <div class='profile-picture border-bottom'>
             <%= cl_image_tag current_user.photo, class:'avatar-huge' %>
           </div>
+
+          <div class='border-bottom card-padding'>
+            <span>
+              <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>
+            </span>
+          </div>
+
           <div class='border-bottom card-padding'>
             <span>
               <% review_count = 0 %>
               <% @bookings.each do |booking| %>
                 <% review_count += booking.reviews.length %>
               <% end %>
-              <%= @user.reviews.length + review_count %> Reviews
+              <i class="fas fa-toilet-paper paper-review"></i> <%= @user.reviews.length + review_count %> Reviews
             </span>
           </div>
           <div class='card-padding'>
-            <span>Joined in <%= @user.created_at.to_s.match(/^\d+/) %>
+            <span>Joined in <b><%= @user.created_at.to_s.match(/^\d+/) %></b>
             </span>
           </div>
           <%= link_to 'Edit Profile', '#', class:'btn btn-primary' %>
