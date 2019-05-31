@@ -37,7 +37,7 @@ const initMapbox = (initCoord) => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/tylermcwilliam/cjw8rcrwg14np1cl6wm6pzumk',
+      style: 'mapbox://styles/tylermcwilliam/cjwbjxbpb088d1co7qc4obcho/',
       pitch: 55,
       bearing: 0,
       zoom: 10,
