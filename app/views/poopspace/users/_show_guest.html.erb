@@ -1,74 +1,118 @@
 <div class="banner d-flex flex-column justify-content-between" style="background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,1)), url(https://upload.wikimedia.org/wikipedia/commons/f/f6/Mint_Hut_outhouse._Talkeetna_Mountains%2C_Alaska_%2830739423892%29.jpg);">
 
-  <div class="profile-container">
-    <div>
-      <div class='profile-card card-padding'>
-        <div class='profile-picture border-bottom'>
-          <%= cl_image_tag @user.photo.url, class:'avatar-huge' %>
-        </div>
-          <div class='border-bottom card-padding'>
-            <span>
-              <i class="fas fa-toilet-paper paper-review"></i> <%= @review_count %>
+  <h1 class="text-white text-center" style='margin: 70px 0 !important;'><%= @user.first_name.capitalize%> <%= @user.last_name.capitalize %></h1>
+
+  <div class='d-flex justify-content-center'>
+    <div class="profile-container">
+      <div class='d-flex justify-content-end'>
+        <div class='profile-card card-padding' style='width:300px; margin-top: 40px;height:36vh;'>
+          <div class='profile-picture border-bottom'>
+            <%= cl_image_tag @user.photo.url, class:'avatar-huge' %>
+          </div>
+            <div class='border-bottom card-padding'>
+              <span>
+                <i class="fas fa-toilet-paper paper-review"></i> <%= @review_count %>
+                <% if @review_count == 1 %>
+                    <span>Review</span>
+                <% else %>
+                  <span>Reviews</span>
+                <% end %>
+              </span>
+            </div>
+          <div class='card-padding'>
+            <span>Joined in <b><%= @user.created_at.to_s.match(/^\d+/) %></b>
             </span>
           </div>
-        <div class='card-padding'>
-          <span>Joined in <b><%= @user.created_at.to_s.match(/^\d+/) %></b>
-          </span>
         </div>
       </div>
     </div>
-
-    <div class='profile-description-card'>
-      <div class='border-bottom'>
-        <h2 class="text-white"><%= @user.first_name.capitalize%> <%= @user.last_name.capitalize %></h2>
-      </div>
-      <div class='user-listings'>
-        <h2 class="text-white">Listings</h2>
-        <% @toilets.each do |toilet| %>
-          <div class="card rounded-lg">
-            <div class="card-body d-flex justify-content-between rounded-lg">
-                <div>
-                  <h4 class="card-title"><%= link_to toilet.name, toilet_path(toilet) %></h4>
-                  <p class="card-text"><%= toilet.description %></p>
-                  <p class="card-text"><small class="text-muted">$<%= toilet.rate %> / min</small></p>
-                </div>
-                <div>
+    <div class="poopspace-container d-flex" style="margin-top:-30px;">
+      <div class="listings">
+        <div class='d-flex justify-content-start mb-2'>
+          <h1>Listings</h1>
+        </div>
+        <div class="listings-cards-container justify-content-start">
+          <div class="scroll-cards" style="background-color:rgba(255,255,255,.2);padding-left:10px; margin-bottom:75px;">
+            <div class="row text-center" style='list-style:none;'>
+              <% @toilets.each do |toilet| %>
+                <div class="card-col m-3">
                   <% if toilet.photo.url.nil? %>
-                    <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", style: "width: 200px", class: "rounded float-right"), toilet_path(toilet)  %>
+                    <%= link_to image_tag("https://www.thegazette.com/storyimage/GA/20181124/ARTICLE/181129809/AR/0/AR-181129809.jpg&MaxH=250&MaxW=450", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
                   <% else %>
-                    <%= link_to cl_image_tag(toilet.photo.url, alt: "alttext", style: "width: 200px; height: 150px",class: "rounded float-right"), toilet_path(toilet)  %>
+                    <%= link_to cl_image_tag(toilet.photo.url, :width=>300, :height=>200, :crop=>"crop", alt: "alttext", class: "card-img-top"), toilet_path(toilet)  %>
                   <% end %>
+
+                  <div class="card-infos">
+                    <div class='d-flex flex-column justify-content-start align-items-start'>
+                      <h2><%= link_to toilet.name, toilet_path(toilet) %></h2>
+                      <p><%= toilet.description %></p>
+                    </div>
+
+                    <h2 class="card-pricing">$<%= toilet.rate %> <span style='font-size:10px'>/min</span></h2>
+                    <% if toilet.user.photo.file.nil? %>
+                      <%= link_to image_tag("paper.png", alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
+                    <% else %>
+                      <%= link_to cl_image_tag(toilet.user.photo, alt: "avatar", class: "card-user avatar-bordered"), poopspace_user_path(toilet.user_id) %>
+                    <% end %>
+
+                    <h2 class='card-rating'>
+                      <% sum_rating = 0 %>
+                      <% num_rating = 0 %>
+                      <% average = 0 %>
+                      <% bookings = toilet.bookings %>
+                      <% bookings.each do |booking| %>
+                        <% if booking.reviews.nil? %>
+                          <% 0 %>
+                        <% else %>
+                          <% booking.reviews.each do |review| %>
+                            <% sum_rating += review.rating %>
+                            <% num_rating += 1 %>
+                          <% end %>
+                        <% end %>
+                      <% end %>
+                      <% average = (sum_rating / num_rating) if num_rating != 0%>
+                      <%= average %>/5
+                    </h2>
+                  </div>
                 </div>
+              <% end %>
             </div>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class='d-flex justify-content-center' style='margin-bottom: 175px;'>
+
+
+
+
+
+  <div class='d-flex flex-column align-items-center justify-content-center' style='margin-bottom: 175px;'>
     <div style='width:1000px;'>
       <h2 style='color:white;'>Reviews</h2>
-      <div class='profile-container d-flex flex-column text-white card-padding' style='background-color:rgba(255,255,255,.3);width:1000px;margin:auto;border-radius:5px;'>
+      <div class='profile-container d-flex flex-column text-white' style='background-color:rgba(255,255,255,.3);width:1000px;margin:auto;border-radius:5px;'>
           <ul>
-            <% @reviews.each do |review| %>
-              <% if review.reviewable_type == "User" %>
-                <li class='border-bottom'>
-                  <div class="d-flex justify-content-start align-items-center">
-                    <%= cl_image_tag User.find(review.user_id).photo, class:'avatar' %>
-                    <span style='margin-left:5px;'><b><%= User.find(review.user_id).first_name.capitalize %></b> gave <i><%= review.reviewable.first_name %></i> a <b><%= review.rating %>/5</b></span>
-                  </div>
-                  <p><%= review.content %></p>
-                </li>
-              <% else %>
-                <li class='border-bottom'>
-                  <div class="d-flex justify-content-start align-items-center">
-                  <%= cl_image_tag review.reviewable.photo, class:'avatar' %>
-
-                  <span style='margin-left:5px;'><b><%= User.find(review.user_id).first_name.capitalize %></b> gave <i><%= review.reviewable.first_name %>  a <b><%= review.rating %>/5</b></span>
+            <% @all_reviews.reverse.each do |review| %>
+              <li>
+                <div class="d-flex justify-content-start align-items-center">
+                  <%= cl_image_tag User.find(review.user_id).photo, class:'avatar' %>
+                  <% if review.reviewable_type == "User" %>
+                    <span style='margin-left:5px;'>
+                      <b><%= User.find(review.user_id).first_name.capitalize %></b> reviewed
+                      <i><%= review.reviewable.first_name %></i> as a guest
+                      <b><%= review.rating %>/5</b>
+                    </span>
+                  <% else %>
+                    <span style='margin-left:5px;'>
+                      <b><%= User.find(review.user_id).first_name.capitalize %></b> reviewed
+                      <i><%= @user.first_name %></i>'s
+                      <b><%= Toilet.find(review.reviewable.toilet_id).name %></b>
+                      <b><%= review.rating %>/5</b></span>
+                  <% end %>
                 </div>
-                </li>
-              <% end %>
+                <p><%= review.content %></p>
+              </li>
             <% end %>
           </ul>
       </div>
