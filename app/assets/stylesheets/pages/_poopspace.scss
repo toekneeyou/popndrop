@@ -47,7 +47,7 @@ header {
   }
   li {
     list-style: none;
-    margin: 0;
+    margin: 20px 20px 40px 20px;
     padding: 0;
   }
   p {
@@ -78,15 +78,12 @@ header {
   }
 }
 
-
 .paper-review {
   color:orange;
   animation: glow 3s infinite;
   animation-direction: alternate;
   animation-iteration-count: infinite;
 }
-
-
 
 @keyframes glow {
  from {color: red}

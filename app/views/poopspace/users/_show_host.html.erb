@@ -28,11 +28,12 @@
 
           <div class='border-bottom card-padding'>
             <span>
-              <% review_count = 0 %>
-              <% @bookings.each do |booking| %>
-                <% review_count += booking.reviews.length %>
-              <% end %>
-              <i class="fas fa-toilet-paper paper-review"></i> <%= @user.reviews.length + review_count %> Reviews
+              <i class="fas fa-toilet-paper paper-review"></i> <%= @review_count %>
+                <% if @review_count == 1 %>
+                  <span>Review</span>
+                <% else %>
+                  <span>Reviews</span>
+                <% end %>
             </span>
           </div>
           <div class='card-padding'>
