@@ -34,11 +34,7 @@ class Poopspace::UsersController < ApplicationController
   end
 
   def host_bookings
-    @hosts_bookings = Booking.select do |booking|
-      host_toilet_ids.select do |toilet_id|
-        booking.toilet_id == toilet_id
-      end
-    end
+    @host_bookings = Booking.all.where(toilet_id: host_toilet_ids)
   end
 
 end
