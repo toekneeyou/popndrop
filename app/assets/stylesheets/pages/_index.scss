@@ -30,13 +30,14 @@
 .scroll-cards {
   width: 100%;
   overflow-x: scroll;
-  height: 310px;
+  height: 330px;
 }
 
 .scroll-cards > .row {
   display: inline-flex;
   white-space: nowrap;
   flex-wrap: nowrap;
+  margin-top: 5px;
 }
 
 .scroll-cards > .row > .card-col {
