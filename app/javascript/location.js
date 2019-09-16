@@ -1,3 +1,5 @@
+// app/javascript/plugins/location.js
+
 import { initMapbox } from './plugins/init_mapbox'
 
 const setHomepageMap = () => {
